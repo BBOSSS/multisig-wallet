@@ -12,6 +12,7 @@ import { useDeployedContractInfo, useScaffoldContract, useScaffoldReadContract }
 import { useTargetNetwork } from "~~/hooks/scaffold-eth/useTargetNetwork";
 import { notification } from "~~/utils/scaffold-eth";
 import { Address as TAddress, isAddress } from "viem";
+import { Transaction } from "~~/utils/postgres/transaction";
 
 export type TransactionData = {
   chainId: number;
@@ -51,8 +52,6 @@ const CreatePage: FC = () => {
   const chainId = useChainId();
   const { data: walletClient } = useWalletClient();
   const { targetNetwork } = useTargetNetwork();
-
-  const poolServerUrl = getPoolServerUrl(targetNetwork.id);
 
   const [ethValue, setEthValue] = useState("");
   // const { data: contractInfo } = useDeployedContractInfo("MultiSigWallet");
@@ -153,11 +152,11 @@ const CreatePage: FC = () => {
           return;
         }
 
-        const txData: TransactionData = {
+        const txData: Transaction = {
           chainId: chainId,
           address: proxyAddress,
           nonce: nonce || 0n,
-          to: txTo,
+          txTo: txTo as `0x${string}`,
           amount: predefinedTxData.amount,
           data: predefinedTxData.callData as `0x${string}`,
           hash: newHash,
@@ -166,21 +165,35 @@ const CreatePage: FC = () => {
           requiredApprovals: signaturesRequired || 0n,
         };
 
-        await fetch(poolServerUrl, {
+        // await fetch(poolServerUrl, {
+        //   method: "POST",
+        //   headers: { "Content-Type": "application/json" },
+        //   body: JSON.stringify(
+        //     txData,
+        //     // stringifying bigint
+        //     (key, value) => (typeof value === "bigint" ? value.toString() : value),
+        //   ),
+        // });
+        fetch("api/tx/add", {
           method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(
-            txData,
-            // stringifying bigint
-            (key, value) => (typeof value === "bigint" ? value.toString() : value),
-          ),
-        });
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(txData, (key, value) => (typeof value === "bigint" ? value.toString() : value)),
+        })
+          .then(response => {
+            setTimeout(() => {
+              router.push("/pool");
+            }, 777);
+          })
+          .catch(error => {
+            console.error("Error:", error);
+            notification.error(`Error: ${error}`);
+          });
 
         setPredefinedTxData(DEFAULT_TX_DATA);
 
-        setTimeout(() => {
-          router.push("/pool");
-        }, 777);
+        
       } else {
         notification.info("Only owners can propose transactions");
       }

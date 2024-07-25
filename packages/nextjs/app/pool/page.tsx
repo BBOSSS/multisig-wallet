@@ -1,7 +1,8 @@
 "use client";
 
 import { type FC, useMemo, useState, useEffect } from "react";
-import { TransactionData, getPoolServerUrl } from "../create/page";
+// import { TransactionData, getPoolServerUrl } from "../create/page";
+import { Transaction } from "~~/utils/postgres/transaction";
 import { TransactionItem } from "./_components";
 import { useInterval } from "usehooks-ts";
 import { useChainId, useAccount } from "wagmi";
@@ -38,10 +39,10 @@ const Pool: FC = () => {
     setHasProxy(isAddress(proxyAddress));
   }, [proxyAddress, setProxyAddress]);
 
-  const [transactions, setTransactions] = useState<TransactionData[]>();
+  const [transactions, setTransactions] = useState<Transaction[]>();
   // const [subscriptionEventsHashes, setSubscriptionEventsHashes] = useState<`0x${string}`[]>([]);
   const { targetNetwork } = useTargetNetwork();
-  const poolServerUrl = getPoolServerUrl(targetNetwork.id);
+  // const poolServerUrl = getPoolServerUrl(targetNetwork.id);
   const { data: contractInfo } = useDeployedContractInfo("MultiSigWallet");
   const chainId = useChainId();
   const { address } = useAccount();
@@ -62,7 +63,7 @@ const Pool: FC = () => {
     contractAddr: proxyAddress,
     contractName: "MultiSigWallet",
     eventName: "ExecuteTransaction",
-    fromBlock: 0n,
+    fromBlock: 6366370n,
     watch: true,
   });
 
@@ -84,11 +85,19 @@ const Pool: FC = () => {
   useInterval(() => {
     const getTransactions = async () => {
       try {
-        const res: { [key: string]: TransactionData } = await (
-          await fetch(`${poolServerUrl}${proxyAddress}_${chainId}`)
-        ).json();
+        const res: { [key: string]: Transaction } = await (await fetch("api/tx/get", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            address: proxyAddress,
+            chainId: chainId,
+          }, (key, value) => (typeof value === "bigint" ? value.toString() : value)),
+        })).json();
+        // console.log("res:", res);
 
-        const newTransactions: TransactionData[] = [];
+        const newTransactions: Transaction[] = [];
         // eslint-disable-next-line no-restricted-syntax, guard-for-in
         for (const i in res) {
           const validSignatures = [];
@@ -105,10 +114,11 @@ const Pool: FC = () => {
               validSignatures.push({ signer, signature: res[i].signatures[s] });
             }
           }
-          const update: TransactionData = { ...res[i], validSignatures };
+          const update: Transaction = { ...res[i], validSignatures };
           newTransactions.push(update);
         }
         setTransactions(newTransactions);
+        console.log("newTransactions:", newTransactions);
       } catch (e) {
         notification.error("Error fetching transactions");
         console.log(e);
@@ -116,7 +126,7 @@ const Pool: FC = () => {
     };
 
     getTransactions();
-  }, 3777);
+  }, 10000);
 
   const lastTx = useMemo(
     () =>

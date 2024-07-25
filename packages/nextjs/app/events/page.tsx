@@ -34,35 +34,35 @@ const Events: NextPage = () => {
     contractAddr: proxyAddress,
     contractName: "MultiSigWallet",
     eventName: "Deposit",
-    fromBlock: 0n,
+    fromBlock: 6366370n,
   });
 
   const { data: WithdrawEvents, isLoading: isWithdrawEventsLoading } = useScaffoldEventHistory({
     contractAddr: proxyAddress,
     contractName: "MultiSigWallet",
     eventName: "Withdraw",
-    fromBlock: 0n,
+    fromBlock: 6366370n,
   });
 
   const { data: AddOwnerEvents, isLoading: isAddOwnerEventsLoading } = useScaffoldEventHistory({
     contractAddr: proxyAddress,
     contractName: "MultiSigWallet",
     eventName: "AddOwner",
-    fromBlock: 0n,
+    fromBlock: 6366370n,
   });
 
   const { data: RemoveOwnerEvents, isLoading: isRemoveOwnerEventsLoading } = useScaffoldEventHistory({
     contractAddr: proxyAddress,
     contractName: "MultiSigWallet",
     eventName: "RemoveOwner",
-    fromBlock: 0n,
+    fromBlock: 6366370n,
   });
 
   const { data: ExecuteTransactionEvents, isLoading: isExecuteTransactionEventsLoading } = useScaffoldEventHistory({
     contractAddr: proxyAddress,
     contractName: "MultiSigWallet",
     eventName: "ExecuteTransaction",
-    fromBlock: 0n,
+    fromBlock: 6366370n,
   });
 
   const getRole = (role: number | undefined) => {

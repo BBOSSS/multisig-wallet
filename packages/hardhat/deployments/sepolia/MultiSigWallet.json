@@ -1,0 +1,640 @@
+{
+  "address": "0xc2Ba4c7eB13f5e3fb014e8994fCa8970FA245898",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum MultiSigWallet.Role",
+          "name": "role",
+          "type": "uint8"
+        }
+      ],
+      "name": "AddOwner",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "sender",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "name": "Deposit",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "address payable",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "nonce",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "_hash",
+          "type": "bytes32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes",
+          "name": "result",
+          "type": "bytes"
+        }
+      ],
+      "name": "ExecuteTransaction",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "owner",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "enum MultiSigWallet.Role",
+          "name": "role",
+          "type": "uint8"
+        }
+      ],
+      "name": "RemoveOwner",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "msgHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "SignMsg",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint256",
+          "name": "balance",
+          "type": "uint256"
+        }
+      ],
+      "name": "Withdraw",
+      "type": "event"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "internalType": "enum MultiSigWallet.Role",
+          "name": "role",
+          "type": "uint8"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_signaturesRequired",
+          "type": "uint256"
+        }
+      ],
+      "name": "addOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address payable",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        },
+        {
+          "internalType": "bytes[]",
+          "name": "signatures",
+          "type": "bytes[]"
+        }
+      ],
+      "name": "executeTransaction",
+      "outputs": [
+        {
+          "internalType": "bytes",
+          "name": "",
+          "type": "bytes"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getAdminCount",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getChainId",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getNonce",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "getRole",
+      "outputs": [
+        {
+          "internalType": "enum MultiSigWallet.Role",
+          "name": "",
+          "type": "uint8"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getSignaturesRequired",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTotalSigner",
+      "outputs": [
+        {
+          "internalType": "uint256",
+          "name": "",
+          "type": "uint256"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_nonce",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "value",
+          "type": "uint256"
+        },
+        {
+          "internalType": "bytes",
+          "name": "data",
+          "type": "bytes"
+        }
+      ],
+      "name": "getTransactionStructHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "getTransactionTypeHash",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "uint256",
+          "name": "_chainId",
+          "type": "uint256"
+        },
+        {
+          "internalType": "address[]",
+          "name": "owners",
+          "type": "address[]"
+        },
+        {
+          "internalType": "enum MultiSigWallet.Role[]",
+          "name": "roles",
+          "type": "uint8[]"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_signaturesRequired",
+          "type": "uint256"
+        }
+      ],
+      "name": "init",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        }
+      ],
+      "name": "isOwner",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "_hash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes",
+          "name": "_signature",
+          "type": "bytes"
+        }
+      ],
+      "name": "recover",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "pure",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "addr",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "_signaturesRequired",
+          "type": "uint256"
+        }
+      ],
+      "name": "removeOwner",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "to",
+          "type": "address"
+        },
+        {
+          "internalType": "uint256",
+          "name": "amount",
+          "type": "uint256"
+        }
+      ],
+      "name": "withdraw",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "receive"
+    }
+  ],
+  "transactionHash": "0x50d32d3eec13f49bc281d6deb97d9d20a06b1f74f4064488b8ac92df877ea94a",
+  "receipt": {
+    "to": null,
+    "from": "0x2f2E264e8F52258A5F6F7C459EEDCaE586d4f409",
+    "contractAddress": "0xc2Ba4c7eB13f5e3fb014e8994fCa8970FA245898",
+    "transactionIndex": 90,
+    "gasUsed": "1537022",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0xbaac0a7897607b7a9c083d3e7c4930b58350f251794298df533c69c36e00cf1a",
+    "transactionHash": "0x50d32d3eec13f49bc281d6deb97d9d20a06b1f74f4064488b8ac92df877ea94a",
+    "logs": [],
+    "blockNumber": 6366374,
+    "cumulativeGasUsed": "13919629",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [],
+  "numDeployments": 1,
+  "solcInputHash": "4f868d8a83da5211ee25dd7757242ec1",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum MultiSigWallet.Role\",\"name\":\"role\",\"type\":\"uint8\"}],\"name\":\"AddOwner\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"sender\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"name\":\"Deposit\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"nonce\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"bytes32\",\"name\":\"_hash\",\"type\":\"bytes32\"},{\"indexed\":false,\"internalType\":\"bytes\",\"name\":\"result\",\"type\":\"bytes\"}],\"name\":\"ExecuteTransaction\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"owner\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"enum MultiSigWallet.Role\",\"name\":\"role\",\"type\":\"uint8\"}],\"name\":\"RemoveOwner\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"bytes32\",\"name\":\"msgHash\",\"type\":\"bytes32\"}],\"name\":\"SignMsg\",\"type\":\"event\"},{\"anonymous\":false,\"inputs\":[{\"indexed\":true,\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"},{\"indexed\":false,\"internalType\":\"uint256\",\"name\":\"balance\",\"type\":\"uint256\"}],\"name\":\"Withdraw\",\"type\":\"event\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"enum MultiSigWallet.Role\",\"name\":\"role\",\"type\":\"uint8\"},{\"internalType\":\"uint256\",\"name\":\"_signaturesRequired\",\"type\":\"uint256\"}],\"name\":\"addOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_nonce\",\"type\":\"uint256\"},{\"internalType\":\"address payable\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"},{\"internalType\":\"bytes[]\",\"name\":\"signatures\",\"type\":\"bytes[]\"}],\"name\":\"executeTransaction\",\"outputs\":[{\"internalType\":\"bytes\",\"name\":\"\",\"type\":\"bytes\"}],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getAdminCount\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getChainId\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getNonce\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"getRole\",\"outputs\":[{\"internalType\":\"enum MultiSigWallet.Role\",\"name\":\"\",\"type\":\"uint8\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getSignaturesRequired\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTotalSigner\",\"outputs\":[{\"internalType\":\"uint256\",\"name\":\"\",\"type\":\"uint256\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_nonce\",\"type\":\"uint256\"},{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"value\",\"type\":\"uint256\"},{\"internalType\":\"bytes\",\"name\":\"data\",\"type\":\"bytes\"}],\"name\":\"getTransactionStructHash\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[],\"name\":\"getTransactionTypeHash\",\"outputs\":[{\"internalType\":\"bytes32\",\"name\":\"\",\"type\":\"bytes32\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"uint256\",\"name\":\"_chainId\",\"type\":\"uint256\"},{\"internalType\":\"address[]\",\"name\":\"owners\",\"type\":\"address[]\"},{\"internalType\":\"enum MultiSigWallet.Role[]\",\"name\":\"roles\",\"type\":\"uint8[]\"},{\"internalType\":\"uint256\",\"name\":\"_signaturesRequired\",\"type\":\"uint256\"}],\"name\":\"init\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"}],\"name\":\"isOwner\",\"outputs\":[{\"internalType\":\"bool\",\"name\":\"\",\"type\":\"bool\"}],\"stateMutability\":\"view\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"bytes32\",\"name\":\"_hash\",\"type\":\"bytes32\"},{\"internalType\":\"bytes\",\"name\":\"_signature\",\"type\":\"bytes\"}],\"name\":\"recover\",\"outputs\":[{\"internalType\":\"address\",\"name\":\"\",\"type\":\"address\"}],\"stateMutability\":\"pure\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"addr\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"_signaturesRequired\",\"type\":\"uint256\"}],\"name\":\"removeOwner\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"inputs\":[{\"internalType\":\"address\",\"name\":\"to\",\"type\":\"address\"},{\"internalType\":\"uint256\",\"name\":\"amount\",\"type\":\"uint256\"}],\"name\":\"withdraw\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"},{\"stateMutability\":\"payable\",\"type\":\"receive\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{\"withdraw(address,uint256)\":{\"notice\":\"Function that allows the owner to withdraw all the Ether in the contract The function can only be called by the owner of the contract as defined by the isOwner modifier\"}},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/MultiSigWallet.sol\":\"MultiSigWallet\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"@openzeppelin/contracts/utils/Strings.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.8.0) (utils/Strings.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"./math/Math.sol\\\";\\n\\n/**\\n * @dev String operations.\\n */\\nlibrary Strings {\\n    bytes16 private constant _SYMBOLS = \\\"0123456789abcdef\\\";\\n    uint8 private constant _ADDRESS_LENGTH = 20;\\n\\n    /**\\n     * @dev Converts a `uint256` to its ASCII `string` decimal representation.\\n     */\\n    function toString(uint256 value) internal pure returns (string memory) {\\n        unchecked {\\n            uint256 length = Math.log10(value) + 1;\\n            string memory buffer = new string(length);\\n            uint256 ptr;\\n            /// @solidity memory-safe-assembly\\n            assembly {\\n                ptr := add(buffer, add(32, length))\\n            }\\n            while (true) {\\n                ptr--;\\n                /// @solidity memory-safe-assembly\\n                assembly {\\n                    mstore8(ptr, byte(mod(value, 10), _SYMBOLS))\\n                }\\n                value /= 10;\\n                if (value == 0) break;\\n            }\\n            return buffer;\\n        }\\n    }\\n\\n    /**\\n     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation.\\n     */\\n    function toHexString(uint256 value) internal pure returns (string memory) {\\n        unchecked {\\n            return toHexString(value, Math.log256(value) + 1);\\n        }\\n    }\\n\\n    /**\\n     * @dev Converts a `uint256` to its ASCII `string` hexadecimal representation with fixed length.\\n     */\\n    function toHexString(uint256 value, uint256 length) internal pure returns (string memory) {\\n        bytes memory buffer = new bytes(2 * length + 2);\\n        buffer[0] = \\\"0\\\";\\n        buffer[1] = \\\"x\\\";\\n        for (uint256 i = 2 * length + 1; i > 1; --i) {\\n            buffer[i] = _SYMBOLS[value & 0xf];\\n            value >>= 4;\\n        }\\n        require(value == 0, \\\"Strings: hex length insufficient\\\");\\n        return string(buffer);\\n    }\\n\\n    /**\\n     * @dev Converts an `address` with fixed length of 20 bytes to its not checksummed ASCII `string` hexadecimal representation.\\n     */\\n    function toHexString(address addr) internal pure returns (string memory) {\\n        return toHexString(uint256(uint160(addr)), _ADDRESS_LENGTH);\\n    }\\n}\\n\",\"keccak256\":\"0xa4d1d62251f8574deb032a35fc948386a9b4de74b812d4f545a1ac120486b48a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/cryptography/ECDSA.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.8.0) (utils/cryptography/ECDSA.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"../Strings.sol\\\";\\n\\n/**\\n * @dev Elliptic Curve Digital Signature Algorithm (ECDSA) operations.\\n *\\n * These functions can be used to verify that a message was signed by the holder\\n * of the private keys of a given address.\\n */\\nlibrary ECDSA {\\n    enum RecoverError {\\n        NoError,\\n        InvalidSignature,\\n        InvalidSignatureLength,\\n        InvalidSignatureS,\\n        InvalidSignatureV // Deprecated in v4.8\\n    }\\n\\n    function _throwError(RecoverError error) private pure {\\n        if (error == RecoverError.NoError) {\\n            return; // no error: do nothing\\n        } else if (error == RecoverError.InvalidSignature) {\\n            revert(\\\"ECDSA: invalid signature\\\");\\n        } else if (error == RecoverError.InvalidSignatureLength) {\\n            revert(\\\"ECDSA: invalid signature length\\\");\\n        } else if (error == RecoverError.InvalidSignatureS) {\\n            revert(\\\"ECDSA: invalid signature 's' value\\\");\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the address that signed a hashed message (`hash`) with\\n     * `signature` or error string. This address can then be used for verification purposes.\\n     *\\n     * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:\\n     * this function rejects them by requiring the `s` value to be in the lower\\n     * half order, and the `v` value to be either 27 or 28.\\n     *\\n     * IMPORTANT: `hash` _must_ be the result of a hash operation for the\\n     * verification to be secure: it is possible to craft signatures that\\n     * recover to arbitrary addresses for non-hashed data. A safe way to ensure\\n     * this is by receiving a hash of the original message (which may otherwise\\n     * be too long), and then calling {toEthSignedMessageHash} on it.\\n     *\\n     * Documentation for signature generation:\\n     * - with https://web3js.readthedocs.io/en/v1.3.4/web3-eth-accounts.html#sign[Web3.js]\\n     * - with https://docs.ethers.io/v5/api/signer/#Signer-signMessage[ethers]\\n     *\\n     * _Available since v4.3._\\n     */\\n    function tryRecover(bytes32 hash, bytes memory signature) internal pure returns (address, RecoverError) {\\n        if (signature.length == 65) {\\n            bytes32 r;\\n            bytes32 s;\\n            uint8 v;\\n            // ecrecover takes the signature parameters, and the only way to get them\\n            // currently is to use assembly.\\n            /// @solidity memory-safe-assembly\\n            assembly {\\n                r := mload(add(signature, 0x20))\\n                s := mload(add(signature, 0x40))\\n                v := byte(0, mload(add(signature, 0x60)))\\n            }\\n            return tryRecover(hash, v, r, s);\\n        } else {\\n            return (address(0), RecoverError.InvalidSignatureLength);\\n        }\\n    }\\n\\n    /**\\n     * @dev Returns the address that signed a hashed message (`hash`) with\\n     * `signature`. This address can then be used for verification purposes.\\n     *\\n     * The `ecrecover` EVM opcode allows for malleable (non-unique) signatures:\\n     * this function rejects them by requiring the `s` value to be in the lower\\n     * half order, and the `v` value to be either 27 or 28.\\n     *\\n     * IMPORTANT: `hash` _must_ be the result of a hash operation for the\\n     * verification to be secure: it is possible to craft signatures that\\n     * recover to arbitrary addresses for non-hashed data. A safe way to ensure\\n     * this is by receiving a hash of the original message (which may otherwise\\n     * be too long), and then calling {toEthSignedMessageHash} on it.\\n     */\\n    function recover(bytes32 hash, bytes memory signature) internal pure returns (address) {\\n        (address recovered, RecoverError error) = tryRecover(hash, signature);\\n        _throwError(error);\\n        return recovered;\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-tryRecover} that receives the `r` and `vs` short-signature fields separately.\\n     *\\n     * See https://eips.ethereum.org/EIPS/eip-2098[EIP-2098 short signatures]\\n     *\\n     * _Available since v4.3._\\n     */\\n    function tryRecover(\\n        bytes32 hash,\\n        bytes32 r,\\n        bytes32 vs\\n    ) internal pure returns (address, RecoverError) {\\n        bytes32 s = vs & bytes32(0x7fffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff);\\n        uint8 v = uint8((uint256(vs) >> 255) + 27);\\n        return tryRecover(hash, v, r, s);\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-recover} that receives the `r and `vs` short-signature fields separately.\\n     *\\n     * _Available since v4.2._\\n     */\\n    function recover(\\n        bytes32 hash,\\n        bytes32 r,\\n        bytes32 vs\\n    ) internal pure returns (address) {\\n        (address recovered, RecoverError error) = tryRecover(hash, r, vs);\\n        _throwError(error);\\n        return recovered;\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-tryRecover} that receives the `v`,\\n     * `r` and `s` signature fields separately.\\n     *\\n     * _Available since v4.3._\\n     */\\n    function tryRecover(\\n        bytes32 hash,\\n        uint8 v,\\n        bytes32 r,\\n        bytes32 s\\n    ) internal pure returns (address, RecoverError) {\\n        // EIP-2 still allows signature malleability for ecrecover(). Remove this possibility and make the signature\\n        // unique. Appendix F in the Ethereum Yellow paper (https://ethereum.github.io/yellowpaper/paper.pdf), defines\\n        // the valid range for s in (301): 0 < s < secp256k1n \\u00f7 2 + 1, and for v in (302): v \\u2208 {27, 28}. Most\\n        // signatures from current libraries generate a unique signature with an s-value in the lower half order.\\n        //\\n        // If your library generates malleable signatures, such as s-values in the upper range, calculate a new s-value\\n        // with 0xFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFEBAAEDCE6AF48A03BBFD25E8CD0364141 - s1 and flip v from 27 to 28 or\\n        // vice versa. If your library also generates signatures with 0/1 for v instead 27/28, add 27 to v to accept\\n        // these malleable signatures as well.\\n        if (uint256(s) > 0x7FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF5D576E7357A4501DDFE92F46681B20A0) {\\n            return (address(0), RecoverError.InvalidSignatureS);\\n        }\\n\\n        // If the signature is valid (and not malleable), return the signer address\\n        address signer = ecrecover(hash, v, r, s);\\n        if (signer == address(0)) {\\n            return (address(0), RecoverError.InvalidSignature);\\n        }\\n\\n        return (signer, RecoverError.NoError);\\n    }\\n\\n    /**\\n     * @dev Overload of {ECDSA-recover} that receives the `v`,\\n     * `r` and `s` signature fields separately.\\n     */\\n    function recover(\\n        bytes32 hash,\\n        uint8 v,\\n        bytes32 r,\\n        bytes32 s\\n    ) internal pure returns (address) {\\n        (address recovered, RecoverError error) = tryRecover(hash, v, r, s);\\n        _throwError(error);\\n        return recovered;\\n    }\\n\\n    /**\\n     * @dev Returns an Ethereum Signed Message, created from a `hash`. This\\n     * produces hash corresponding to the one signed with the\\n     * https://eth.wiki/json-rpc/API#eth_sign[`eth_sign`]\\n     * JSON-RPC method as part of EIP-191.\\n     *\\n     * See {recover}.\\n     */\\n    function toEthSignedMessageHash(bytes32 hash) internal pure returns (bytes32) {\\n        // 32 is the length in bytes of hash,\\n        // enforced by the type signature above\\n        return keccak256(abi.encodePacked(\\\"\\\\x19Ethereum Signed Message:\\\\n32\\\", hash));\\n    }\\n\\n    /**\\n     * @dev Returns an Ethereum Signed Message, created from `s`. This\\n     * produces hash corresponding to the one signed with the\\n     * https://eth.wiki/json-rpc/API#eth_sign[`eth_sign`]\\n     * JSON-RPC method as part of EIP-191.\\n     *\\n     * See {recover}.\\n     */\\n    function toEthSignedMessageHash(bytes memory s) internal pure returns (bytes32) {\\n        return keccak256(abi.encodePacked(\\\"\\\\x19Ethereum Signed Message:\\\\n\\\", Strings.toString(s.length), s));\\n    }\\n\\n    /**\\n     * @dev Returns an Ethereum Signed Typed Data, created from a\\n     * `domainSeparator` and a `structHash`. This produces hash corresponding\\n     * to the one signed with the\\n     * https://eips.ethereum.org/EIPS/eip-712[`eth_signTypedData`]\\n     * JSON-RPC method as part of EIP-712.\\n     *\\n     * See {recover}.\\n     */\\n    function toTypedDataHash(bytes32 domainSeparator, bytes32 structHash) internal pure returns (bytes32) {\\n        return keccak256(abi.encodePacked(\\\"\\\\x19\\\\x01\\\", domainSeparator, structHash));\\n    }\\n}\\n\",\"keccak256\":\"0xda898fa084aa1ddfdb346e6a40459e00a59d87071cce7c315a46d648dd71d0ba\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/cryptography/EIP712.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.8.0) (utils/cryptography/EIP712.sol)\\n\\npragma solidity ^0.8.0;\\n\\nimport \\\"./ECDSA.sol\\\";\\n\\n/**\\n * @dev https://eips.ethereum.org/EIPS/eip-712[EIP 712] is a standard for hashing and signing of typed structured data.\\n *\\n * The encoding specified in the EIP is very generic, and such a generic implementation in Solidity is not feasible,\\n * thus this contract does not implement the encoding itself. Protocols need to implement the type-specific encoding\\n * they need in their contracts using a combination of `abi.encode` and `keccak256`.\\n *\\n * This contract implements the EIP 712 domain separator ({_domainSeparatorV4}) that is used as part of the encoding\\n * scheme, and the final step of the encoding to obtain the message digest that is then signed via ECDSA\\n * ({_hashTypedDataV4}).\\n *\\n * The implementation of the domain separator was designed to be as efficient as possible while still properly updating\\n * the chain id to protect against replay attacks on an eventual fork of the chain.\\n *\\n * NOTE: This contract implements the version of the encoding known as \\\"v4\\\", as implemented by the JSON RPC method\\n * https://docs.metamask.io/guide/signing-data.html[`eth_signTypedDataV4` in MetaMask].\\n *\\n * _Available since v3.4._\\n */\\nabstract contract EIP712 {\\n    /* solhint-disable var-name-mixedcase */\\n    // Cache the domain separator as an immutable value, but also store the chain id that it corresponds to, in order to\\n    // invalidate the cached domain separator if the chain id changes.\\n    bytes32 private immutable _CACHED_DOMAIN_SEPARATOR;\\n    uint256 private immutable _CACHED_CHAIN_ID;\\n    address private immutable _CACHED_THIS;\\n\\n    bytes32 private immutable _HASHED_NAME;\\n    bytes32 private immutable _HASHED_VERSION;\\n    bytes32 private immutable _TYPE_HASH;\\n\\n    /* solhint-enable var-name-mixedcase */\\n\\n    /**\\n     * @dev Initializes the domain separator and parameter caches.\\n     *\\n     * The meaning of `name` and `version` is specified in\\n     * https://eips.ethereum.org/EIPS/eip-712#definition-of-domainseparator[EIP 712]:\\n     *\\n     * - `name`: the user readable name of the signing domain, i.e. the name of the DApp or the protocol.\\n     * - `version`: the current major version of the signing domain.\\n     *\\n     * NOTE: These parameters cannot be changed except through a xref:learn::upgrading-smart-contracts.adoc[smart\\n     * contract upgrade].\\n     */\\n    constructor(string memory name, string memory version) {\\n        bytes32 hashedName = keccak256(bytes(name));\\n        bytes32 hashedVersion = keccak256(bytes(version));\\n        bytes32 typeHash = keccak256(\\n            \\\"EIP712Domain(string name,string version,uint256 chainId,address verifyingContract)\\\"\\n        );\\n        _HASHED_NAME = hashedName;\\n        _HASHED_VERSION = hashedVersion;\\n        _CACHED_CHAIN_ID = block.chainid;\\n        _CACHED_DOMAIN_SEPARATOR = _buildDomainSeparator(typeHash, hashedName, hashedVersion);\\n        _CACHED_THIS = address(this);\\n        _TYPE_HASH = typeHash;\\n    }\\n\\n    /**\\n     * @dev Returns the domain separator for the current chain.\\n     */\\n    function _domainSeparatorV4() internal view returns (bytes32) {\\n        if (address(this) == _CACHED_THIS && block.chainid == _CACHED_CHAIN_ID) {\\n            return _CACHED_DOMAIN_SEPARATOR;\\n        } else {\\n            return _buildDomainSeparator(_TYPE_HASH, _HASHED_NAME, _HASHED_VERSION);\\n        }\\n    }\\n\\n    function _buildDomainSeparator(\\n        bytes32 typeHash,\\n        bytes32 nameHash,\\n        bytes32 versionHash\\n    ) private view returns (bytes32) {\\n        return keccak256(abi.encode(typeHash, nameHash, versionHash, block.chainid, address(this)));\\n    }\\n\\n    /**\\n     * @dev Given an already https://eips.ethereum.org/EIPS/eip-712#definition-of-hashstruct[hashed struct], this\\n     * function returns the hash of the fully encoded EIP712 message for this domain.\\n     *\\n     * This hash can be used together with {ECDSA-recover} to obtain the signer of a message. For example:\\n     *\\n     * ```solidity\\n     * bytes32 digest = _hashTypedDataV4(keccak256(abi.encode(\\n     *     keccak256(\\\"Mail(address to,string contents)\\\"),\\n     *     mailTo,\\n     *     keccak256(bytes(mailContents))\\n     * )));\\n     * address signer = ECDSA.recover(digest, signature);\\n     * ```\\n     */\\n    function _hashTypedDataV4(bytes32 structHash) internal view virtual returns (bytes32) {\\n        return ECDSA.toTypedDataHash(_domainSeparatorV4(), structHash);\\n    }\\n}\\n\",\"keccak256\":\"0x948d8b2d18f38141ec78c5229d770d950ebc781ed3f44cc9e3ccbb9fded5846a\",\"license\":\"MIT\"},\"@openzeppelin/contracts/utils/math/Math.sol\":{\"content\":\"// SPDX-License-Identifier: MIT\\n// OpenZeppelin Contracts (last updated v4.8.0) (utils/math/Math.sol)\\n\\npragma solidity ^0.8.0;\\n\\n/**\\n * @dev Standard math utilities missing in the Solidity language.\\n */\\nlibrary Math {\\n    enum Rounding {\\n        Down, // Toward negative infinity\\n        Up, // Toward infinity\\n        Zero // Toward zero\\n    }\\n\\n    /**\\n     * @dev Returns the largest of two numbers.\\n     */\\n    function max(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a > b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the smallest of two numbers.\\n     */\\n    function min(uint256 a, uint256 b) internal pure returns (uint256) {\\n        return a < b ? a : b;\\n    }\\n\\n    /**\\n     * @dev Returns the average of two numbers. The result is rounded towards\\n     * zero.\\n     */\\n    function average(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // (a + b) / 2 can overflow.\\n        return (a & b) + (a ^ b) / 2;\\n    }\\n\\n    /**\\n     * @dev Returns the ceiling of the division of two numbers.\\n     *\\n     * This differs from standard division with `/` in that it rounds up instead\\n     * of rounding down.\\n     */\\n    function ceilDiv(uint256 a, uint256 b) internal pure returns (uint256) {\\n        // (a + b - 1) / b can overflow on addition, so we distribute.\\n        return a == 0 ? 0 : (a - 1) / b + 1;\\n    }\\n\\n    /**\\n     * @notice Calculates floor(x * y / denominator) with full precision. Throws if result overflows a uint256 or denominator == 0\\n     * @dev Original credit to Remco Bloemen under MIT license (https://xn--2-umb.com/21/muldiv)\\n     * with further edits by Uniswap Labs also under MIT license.\\n     */\\n    function mulDiv(\\n        uint256 x,\\n        uint256 y,\\n        uint256 denominator\\n    ) internal pure returns (uint256 result) {\\n        unchecked {\\n            // 512-bit multiply [prod1 prod0] = x * y. Compute the product mod 2^256 and mod 2^256 - 1, then use\\n            // use the Chinese Remainder Theorem to reconstruct the 512 bit result. The result is stored in two 256\\n            // variables such that product = prod1 * 2^256 + prod0.\\n            uint256 prod0; // Least significant 256 bits of the product\\n            uint256 prod1; // Most significant 256 bits of the product\\n            assembly {\\n                let mm := mulmod(x, y, not(0))\\n                prod0 := mul(x, y)\\n                prod1 := sub(sub(mm, prod0), lt(mm, prod0))\\n            }\\n\\n            // Handle non-overflow cases, 256 by 256 division.\\n            if (prod1 == 0) {\\n                return prod0 / denominator;\\n            }\\n\\n            // Make sure the result is less than 2^256. Also prevents denominator == 0.\\n            require(denominator > prod1);\\n\\n            ///////////////////////////////////////////////\\n            // 512 by 256 division.\\n            ///////////////////////////////////////////////\\n\\n            // Make division exact by subtracting the remainder from [prod1 prod0].\\n            uint256 remainder;\\n            assembly {\\n                // Compute remainder using mulmod.\\n                remainder := mulmod(x, y, denominator)\\n\\n                // Subtract 256 bit number from 512 bit number.\\n                prod1 := sub(prod1, gt(remainder, prod0))\\n                prod0 := sub(prod0, remainder)\\n            }\\n\\n            // Factor powers of two out of denominator and compute largest power of two divisor of denominator. Always >= 1.\\n            // See https://cs.stackexchange.com/q/138556/92363.\\n\\n            // Does not overflow because the denominator cannot be zero at this stage in the function.\\n            uint256 twos = denominator & (~denominator + 1);\\n            assembly {\\n                // Divide denominator by twos.\\n                denominator := div(denominator, twos)\\n\\n                // Divide [prod1 prod0] by twos.\\n                prod0 := div(prod0, twos)\\n\\n                // Flip twos such that it is 2^256 / twos. If twos is zero, then it becomes one.\\n                twos := add(div(sub(0, twos), twos), 1)\\n            }\\n\\n            // Shift in bits from prod1 into prod0.\\n            prod0 |= prod1 * twos;\\n\\n            // Invert denominator mod 2^256. Now that denominator is an odd number, it has an inverse modulo 2^256 such\\n            // that denominator * inv = 1 mod 2^256. Compute the inverse by starting with a seed that is correct for\\n            // four bits. That is, denominator * inv = 1 mod 2^4.\\n            uint256 inverse = (3 * denominator) ^ 2;\\n\\n            // Use the Newton-Raphson iteration to improve the precision. Thanks to Hensel's lifting lemma, this also works\\n            // in modular arithmetic, doubling the correct bits in each step.\\n            inverse *= 2 - denominator * inverse; // inverse mod 2^8\\n            inverse *= 2 - denominator * inverse; // inverse mod 2^16\\n            inverse *= 2 - denominator * inverse; // inverse mod 2^32\\n            inverse *= 2 - denominator * inverse; // inverse mod 2^64\\n            inverse *= 2 - denominator * inverse; // inverse mod 2^128\\n            inverse *= 2 - denominator * inverse; // inverse mod 2^256\\n\\n            // Because the division is now exact we can divide by multiplying with the modular inverse of denominator.\\n            // This will give us the correct result modulo 2^256. Since the preconditions guarantee that the outcome is\\n            // less than 2^256, this is the final result. We don't need to compute the high bits of the result and prod1\\n            // is no longer required.\\n            result = prod0 * inverse;\\n            return result;\\n        }\\n    }\\n\\n    /**\\n     * @notice Calculates x * y / denominator with full precision, following the selected rounding direction.\\n     */\\n    function mulDiv(\\n        uint256 x,\\n        uint256 y,\\n        uint256 denominator,\\n        Rounding rounding\\n    ) internal pure returns (uint256) {\\n        uint256 result = mulDiv(x, y, denominator);\\n        if (rounding == Rounding.Up && mulmod(x, y, denominator) > 0) {\\n            result += 1;\\n        }\\n        return result;\\n    }\\n\\n    /**\\n     * @dev Returns the square root of a number. If the number is not a perfect square, the value is rounded down.\\n     *\\n     * Inspired by Henry S. Warren, Jr.'s \\\"Hacker's Delight\\\" (Chapter 11).\\n     */\\n    function sqrt(uint256 a) internal pure returns (uint256) {\\n        if (a == 0) {\\n            return 0;\\n        }\\n\\n        // For our first guess, we get the biggest power of 2 which is smaller than the square root of the target.\\n        //\\n        // We know that the \\\"msb\\\" (most significant bit) of our target number `a` is a power of 2 such that we have\\n        // `msb(a) <= a < 2*msb(a)`. This value can be written `msb(a)=2**k` with `k=log2(a)`.\\n        //\\n        // This can be rewritten `2**log2(a) <= a < 2**(log2(a) + 1)`\\n        // \\u2192 `sqrt(2**k) <= sqrt(a) < sqrt(2**(k+1))`\\n        // \\u2192 `2**(k/2) <= sqrt(a) < 2**((k+1)/2) <= 2**(k/2 + 1)`\\n        //\\n        // Consequently, `2**(log2(a) / 2)` is a good first approximation of `sqrt(a)` with at least 1 correct bit.\\n        uint256 result = 1 << (log2(a) >> 1);\\n\\n        // At this point `result` is an estimation with one bit of precision. We know the true value is a uint128,\\n        // since it is the square root of a uint256. Newton's method converges quadratically (precision doubles at\\n        // every iteration). We thus need at most 7 iteration to turn our partial result with one bit of precision\\n        // into the expected uint128 result.\\n        unchecked {\\n            result = (result + a / result) >> 1;\\n            result = (result + a / result) >> 1;\\n            result = (result + a / result) >> 1;\\n            result = (result + a / result) >> 1;\\n            result = (result + a / result) >> 1;\\n            result = (result + a / result) >> 1;\\n            result = (result + a / result) >> 1;\\n            return min(result, a / result);\\n        }\\n    }\\n\\n    /**\\n     * @notice Calculates sqrt(a), following the selected rounding direction.\\n     */\\n    function sqrt(uint256 a, Rounding rounding) internal pure returns (uint256) {\\n        unchecked {\\n            uint256 result = sqrt(a);\\n            return result + (rounding == Rounding.Up && result * result < a ? 1 : 0);\\n        }\\n    }\\n\\n    /**\\n     * @dev Return the log in base 2, rounded down, of a positive value.\\n     * Returns 0 if given 0.\\n     */\\n    function log2(uint256 value) internal pure returns (uint256) {\\n        uint256 result = 0;\\n        unchecked {\\n            if (value >> 128 > 0) {\\n                value >>= 128;\\n                result += 128;\\n            }\\n            if (value >> 64 > 0) {\\n                value >>= 64;\\n                result += 64;\\n            }\\n            if (value >> 32 > 0) {\\n                value >>= 32;\\n                result += 32;\\n            }\\n            if (value >> 16 > 0) {\\n                value >>= 16;\\n                result += 16;\\n            }\\n            if (value >> 8 > 0) {\\n                value >>= 8;\\n                result += 8;\\n            }\\n            if (value >> 4 > 0) {\\n                value >>= 4;\\n                result += 4;\\n            }\\n            if (value >> 2 > 0) {\\n                value >>= 2;\\n                result += 2;\\n            }\\n            if (value >> 1 > 0) {\\n                result += 1;\\n            }\\n        }\\n        return result;\\n    }\\n\\n    /**\\n     * @dev Return the log in base 2, following the selected rounding direction, of a positive value.\\n     * Returns 0 if given 0.\\n     */\\n    function log2(uint256 value, Rounding rounding) internal pure returns (uint256) {\\n        unchecked {\\n            uint256 result = log2(value);\\n            return result + (rounding == Rounding.Up && 1 << result < value ? 1 : 0);\\n        }\\n    }\\n\\n    /**\\n     * @dev Return the log in base 10, rounded down, of a positive value.\\n     * Returns 0 if given 0.\\n     */\\n    function log10(uint256 value) internal pure returns (uint256) {\\n        uint256 result = 0;\\n        unchecked {\\n            if (value >= 10**64) {\\n                value /= 10**64;\\n                result += 64;\\n            }\\n            if (value >= 10**32) {\\n                value /= 10**32;\\n                result += 32;\\n            }\\n            if (value >= 10**16) {\\n                value /= 10**16;\\n                result += 16;\\n            }\\n            if (value >= 10**8) {\\n                value /= 10**8;\\n                result += 8;\\n            }\\n            if (value >= 10**4) {\\n                value /= 10**4;\\n                result += 4;\\n            }\\n            if (value >= 10**2) {\\n                value /= 10**2;\\n                result += 2;\\n            }\\n            if (value >= 10**1) {\\n                result += 1;\\n            }\\n        }\\n        return result;\\n    }\\n\\n    /**\\n     * @dev Return the log in base 10, following the selected rounding direction, of a positive value.\\n     * Returns 0 if given 0.\\n     */\\n    function log10(uint256 value, Rounding rounding) internal pure returns (uint256) {\\n        unchecked {\\n            uint256 result = log10(value);\\n            return result + (rounding == Rounding.Up && 10**result < value ? 1 : 0);\\n        }\\n    }\\n\\n    /**\\n     * @dev Return the log in base 256, rounded down, of a positive value.\\n     * Returns 0 if given 0.\\n     *\\n     * Adding one to the result gives the number of pairs of hex symbols needed to represent `value` as a hex string.\\n     */\\n    function log256(uint256 value) internal pure returns (uint256) {\\n        uint256 result = 0;\\n        unchecked {\\n            if (value >> 128 > 0) {\\n                value >>= 128;\\n                result += 16;\\n            }\\n            if (value >> 64 > 0) {\\n                value >>= 64;\\n                result += 8;\\n            }\\n            if (value >> 32 > 0) {\\n                value >>= 32;\\n                result += 4;\\n            }\\n            if (value >> 16 > 0) {\\n                value >>= 16;\\n                result += 2;\\n            }\\n            if (value >> 8 > 0) {\\n                result += 1;\\n            }\\n        }\\n        return result;\\n    }\\n\\n    /**\\n     * @dev Return the log in base 10, following the selected rounding direction, of a positive value.\\n     * Returns 0 if given 0.\\n     */\\n    function log256(uint256 value, Rounding rounding) internal pure returns (uint256) {\\n        unchecked {\\n            uint256 result = log256(value);\\n            return result + (rounding == Rounding.Up && 1 << (result * 8) < value ? 1 : 0);\\n        }\\n    }\\n}\\n\",\"keccak256\":\"0xa1e8e83cd0087785df04ac79fb395d9f3684caeaf973d9e2c71caef723a3a5d6\",\"license\":\"MIT\"},\"contracts/MultiSigWallet.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\nimport \\\"@openzeppelin/contracts/utils/cryptography/ECDSA.sol\\\";\\nimport \\\"@openzeppelin/contracts/utils/cryptography/EIP712.sol\\\";\\n\\ncontract MultiSigWallet is EIP712 {\\n\\tusing ECDSA for bytes32;\\n\\tenum Role {\\n\\t\\tDefault,\\n\\t\\tAdmin, // can execute and sign transaction\\n\\t\\tSigner // can sign transaction\\n\\t}\\n\\n\\t// Events: a way to emit log statements from smart contract that can be listened to by external parties\\n\\tevent Deposit(address indexed sender, uint256 amount, uint256 balance);\\n\\tevent Withdraw(address indexed to, uint256 amount, uint256 balance);\\n\\tevent AddOwner(address indexed owner, Role role);\\n\\tevent RemoveOwner(address indexed owner, Role role);\\n\\tevent ExecuteTransaction(\\n\\t\\taddress indexed owner,\\n\\t\\taddress payable to,\\n\\t\\tuint256 value,\\n\\t\\tbytes data,\\n\\t\\tuint256 nonce,\\n\\t\\tbytes32 _hash,\\n\\t\\tbytes result\\n\\t);\\n\\tevent SignMsg(bytes32 indexed msgHash);\\n\\n\\t// State Variables\\n\\taddress internal singleton; // slot 0 for proxy\\n\\taddress internal factory; // slot 1 for factory\\n\\tuint256 private totalSigner;\\n\\tuint256 private adminCount;\\n\\tuint256 private signaturesRequired;\\n\\tuint256 private nonce;\\n\\tuint256 private chainId;\\n\\tmapping(address => bool) private ownerMap;\\n\\tmapping(address => Role) private roleMap;\\n\\tmapping(bytes32 => bool) private signedMsgMap;\\n\\tbool private initialized;\\n\\t// keccak256(\\\"Transaction(uint256 _nonce,address to,uint256 value,bytes data)\\\");\\n\\tbytes32 private constant TX_TYPEHASH =\\n\\t\\t0xfe9232f930a1888451a774c0b727018ef25ecd765eb13538f36e68d536913ef8;\\n\\n\\t// Constructor: Called once on contract deployment\\n\\tconstructor() EIP712(\\\"MultiSigWallet\\\", \\\"1\\\") {\\n\\t\\tsingleton = address(this);\\n\\t\\tfactory = msg.sender;\\n\\t}\\n\\n\\tmodifier onlySelf() {\\n\\t\\trequire(msg.sender == address(this), \\\"Not self\\\");\\n\\t\\t_;\\n\\t}\\n\\n\\tfunction init(\\n\\t\\tuint256 _chainId,\\n\\t\\taddress[] memory owners,\\n\\t\\tRole[] memory roles,\\n\\t\\tuint256 _signaturesRequired\\n\\t) public {\\n\\t\\trequire(!initialized, \\\"Already initialized\\\");\\n\\t\\tinitialized = true;\\n\\t\\trequire(msg.sender == factory, \\\"Not Creator\\\");\\n\\t\\trequire(\\n\\t\\t\\towners.length == roles.length,\\n\\t\\t\\t\\\"Owners length don't match roles length\\\"\\n\\t\\t);\\n\\t\\trequire(\\n\\t\\t\\t_signaturesRequired <= owners.length && _signaturesRequired > 0,\\n\\t\\t\\t\\\"signaturesRequired must in (0, totalSigner]\\\"\\n\\t\\t);\\n\\t\\ttotalSigner = owners.length;\\n\\t\\tsignaturesRequired = _signaturesRequired;\\n\\t\\tfor (uint256 i = 0; i < totalSigner; i++) {\\n\\t\\t\\taddress addr = owners[i];\\n\\t\\t\\trequire(!ownerMap[addr], \\\"duplicate owner\\\");\\n\\t\\t\\townerMap[addr] = true;\\n\\t\\t\\troleMap[addr] = roles[i];\\n\\t\\t\\tif (roles[i] == Role.Admin) {\\n\\t\\t\\t\\tadminCount++;\\n\\t\\t\\t}\\n\\t\\t\\temit AddOwner(addr, roles[i]);\\n\\t\\t}\\n\\t\\trequire(adminCount > 0, \\\"There must be at least one admin\\\");\\n\\t\\tchainId = _chainId;\\n\\t}\\n\\n\\t// create or update\\n\\tfunction addOwner(\\n\\t\\taddress addr,\\n\\t\\tRole role,\\n\\t\\tuint256 _signaturesRequired\\n\\t) public onlySelf {\\n\\t\\tif (!ownerMap[addr]) {\\n\\t\\t\\ttotalSigner += 1;\\n\\t\\t}\\n\\t\\trequire(\\n\\t\\t\\t_signaturesRequired <= totalSigner && _signaturesRequired > 0,\\n\\t\\t\\t\\\"signaturesRequired must in (0, totalSigner]\\\"\\n\\t\\t);\\n\\t\\tsignaturesRequired = _signaturesRequired;\\n\\t\\townerMap[addr] = true;\\n\\t\\troleMap[addr] = role;\\n\\t\\tif (role == Role.Admin) {\\n\\t\\t\\tadminCount++;\\n\\t\\t}\\n\\t\\temit AddOwner(addr, role);\\n\\t}\\n\\n\\tfunction removeOwner(\\n\\t\\taddress addr,\\n\\t\\tuint256 _signaturesRequired\\n\\t) public onlySelf {\\n\\t\\trequire(ownerMap[addr], \\\"Not Owner\\\");\\n\\t\\trequire(totalSigner > 1, \\\"Keep at least 1 owner\\\");\\n\\t\\ttotalSigner -= 1;\\n\\n\\t\\tif (roleMap[addr] == Role.Admin) {\\n\\t\\t\\tadminCount--;\\n\\t\\t\\trequire(adminCount > 0, \\\"There must be at least one admin\\\");\\n\\t\\t}\\n\\n\\t\\trequire(\\n\\t\\t\\t_signaturesRequired <= totalSigner && _signaturesRequired > 0,\\n\\t\\t\\t\\\"signaturesRequired must in (0, totalSigner]\\\"\\n\\t\\t);\\n\\t\\tsignaturesRequired = _signaturesRequired;\\n\\t\\tdelete ownerMap[addr];\\n\\t\\tRole role = roleMap[addr];\\n\\t\\tdelete roleMap[addr];\\n\\t\\temit RemoveOwner(addr, role);\\n\\t}\\n\\n\\tfunction getTransactionStructHash(\\n\\t\\tuint256 _nonce,\\n\\t\\taddress to,\\n\\t\\tuint256 value,\\n\\t\\tbytes memory data\\n\\t) public view returns (bytes32) {\\n\\t\\tbytes32 structHash = keccak256(\\n\\t\\t\\tabi.encode(TX_TYPEHASH, _nonce, to, value, keccak256(data))\\n\\t\\t);\\n\\t\\treturn _hashTypedDataV4(structHash);\\n\\t}\\n\\n\\tfunction executeTransaction(\\n\\t\\tuint256 _nonce,\\n\\t\\taddress payable to,\\n\\t\\tuint256 value,\\n\\t\\tbytes memory data,\\n\\t\\tbytes[] memory signatures\\n\\t) public returns (bytes memory) {\\n\\t\\trequire(\\n\\t\\t\\townerMap[msg.sender] && roleMap[msg.sender] == Role.Admin,\\n\\t\\t\\t\\\"executeTransaction: only admin can execute\\\"\\n\\t\\t);\\n\\t\\tbytes32 _hash = getTransactionStructHash(_nonce, to, value, data);\\n\\t\\tnonce++;\\n\\t\\taddress preAddr;\\n\\t\\tuint256 validSignatures = 0;\\n\\t\\tfor (uint256 i = 0; i < signatures.length; i++) {\\n\\t\\t\\taddress addr = recover(_hash, signatures[i]);\\n\\t\\t\\trequire(\\n\\t\\t\\t\\taddr > preAddr,\\n\\t\\t\\t\\t\\\"executeTransaction: duplicate or unordered signatures\\\"\\n\\t\\t\\t);\\n\\t\\t\\tif (!ownerMap[addr]) {\\n\\t\\t\\t\\tcontinue;\\n\\t\\t\\t}\\n\\t\\t\\tvalidSignatures++;\\n\\t\\t\\tpreAddr = addr;\\n\\t\\t}\\n\\t\\trequire(\\n\\t\\t\\tvalidSignatures >= signaturesRequired,\\n\\t\\t\\t\\\"executeTransaction: not enough valid signatures\\\"\\n\\t\\t);\\n\\n\\t\\t(bool success, bytes memory result) = to.call{ value: value }(data);\\n\\t\\trequire(success, \\\"executeTransaction: tx failed\\\");\\n\\n\\t\\temit ExecuteTransaction(\\n\\t\\t\\tmsg.sender,\\n\\t\\t\\tto,\\n\\t\\t\\tvalue,\\n\\t\\t\\tdata,\\n\\t\\t\\tnonce - 1,\\n\\t\\t\\t_hash,\\n\\t\\t\\tresult\\n\\t\\t);\\n\\t\\treturn result;\\n\\t}\\n\\n\\tfunction recover(\\n\\t\\tbytes32 _hash,\\n\\t\\tbytes memory _signature\\n\\t) public pure returns (address) {\\n\\t\\t// return _hash.toEthSignedMessageHash().recover(_signature);\\n\\t\\treturn ECDSA.recover(_hash, _signature);\\n\\t}\\n\\n\\t/**\\n\\t * Function that allows the owner to withdraw all the Ether in the contract\\n\\t * The function can only be called by the owner of the contract as defined by the isOwner modifier\\n\\t */\\n\\tfunction withdraw(address to, uint256 amount) public onlySelf {\\n\\t\\tuint256 balance = address(this).balance;\\n\\t\\trequire(amount <= balance, \\\"Insufficient balance\\\");\\n\\t\\t(bool success, ) = payable(to).call{ value: balance }(\\\"\\\");\\n\\t\\trequire(success, \\\"Failed to send Ether\\\");\\n\\t\\temit Withdraw(to, amount, address(this).balance);\\n\\t}\\n\\n\\tfunction getTotalSigner() public view returns (uint256) {\\n\\t\\treturn totalSigner;\\n\\t}\\n\\n\\tfunction getAdminCount() public view returns (uint256) {\\n\\t\\treturn adminCount;\\n\\t}\\n\\n\\tfunction getSignaturesRequired() public view returns (uint256) {\\n\\t\\treturn signaturesRequired;\\n\\t}\\n\\n\\tfunction getNonce() public view returns (uint256) {\\n\\t\\treturn nonce;\\n\\t}\\n\\n\\tfunction getChainId() public view returns (uint256) {\\n\\t\\treturn chainId;\\n\\t}\\n\\n\\tfunction isOwner(address addr) public view returns (bool) {\\n\\t\\treturn ownerMap[addr];\\n\\t}\\n\\n\\tfunction getRole(address addr) public view returns (Role) {\\n\\t\\t// require(isOwner(addr), \\\"Not owner\\\");\\n\\t\\treturn roleMap[addr];\\n\\t}\\n\\n\\tfunction getTransactionTypeHash() public pure returns (bytes32) {\\n\\t\\treturn TX_TYPEHASH;\\n\\t}\\n\\n\\t/**\\n\\t * Function that allows the contract to receive ETH\\n\\t */\\n\\treceive() external payable {\\n\\t\\temit Deposit(msg.sender, msg.value, address(this).balance);\\n\\t}\\n}\\n\",\"keccak256\":\"0x7a1ac5f15d00f74029dd9f7a4bae8ef15abfc94224507cc8c54598de19f27510\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x61014060405234801561001157600080fd5b50604080518082018252600e81526d135d5b1d1a54da59d5d85b1b195d60921b6020808301918252835180850190945260018452603160f81b908401528151902060e08190527fc89efdaa54c0f20c7adf612882df0950f5a951637e0307cdcb4c672f298b8bc66101008190524660a0529192917f8b73c3c69bb8fe3d512ecc4cf759cc79239f7b179b0ffacaa9a75d522b39400f6100f58184846040805160208101859052908101839052606081018290524660808201523060a082015260009060c0016040516020818303038152906040528051906020012090509392505050565b6080523060c081905261012091909152600080546001600160a01b0319908116909217905560018054909116331790555061012f92505050565b60805160a05160c05160e05161010051610120516119f661017e60003960006111e00152600061122f0152600061120a015260006111630152600061118d015260006111b701526119f66000f3fe6080604052600436106100ec5760003560e01c8063a8641d851161008a578063d087d28811610059578063d087d288146102fe578063d0f6a84114610313578063d6994e5414610333578063f3fef3a31461035357600080fd5b8063a8641d8514610281578063bfd2b3a314610296578063caa3d5c0146102b6578063cd203bf7146102cb57600080fd5b80633408e470116100c65780633408e470146101da57806344276733146101f95780634c1d76f51461023f5780638b7bf3eb1461026c57600080fd5b80630ae49f2c1461013257806319045a25146101545780632f54bf6e1461019157600080fd5b3661012d576040805134815247602082015233917f90890809c654f11d6e72a28fa60149770a0d11ec6c92319d6ceb2bb0a4ea1a15910160405180910390a2005b600080fd5b34801561013e57600080fd5b5061015261014d366004611447565b610373565b005b34801561016057600080fd5b5061017461016f36600461158c565b6106c6565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561019d57600080fd5b506101ca6101ac3660046115d3565b6001600160a01b031660009081526007602052604090205460ff1690565b6040519015158152602001610188565b3480156101e657600080fd5b506006545b604051908152602001610188565b34801561020557600080fd5b506102326102143660046115d3565b6001600160a01b031660009081526008602052604090205460ff1690565b604051610188919061160d565b34801561024b57600080fd5b5061025f61025a366004611635565b6106db565b6040516101889190611783565b34801561027857600080fd5b506003546101eb565b34801561028d57600080fd5b506002546101eb565b3480156102a257600080fd5b506101526102b1366004611796565b610a25565b3480156102c257600080fd5b506004546101eb565b3480156102d757600080fd5b507ffe9232f930a1888451a774c0b727018ef25ecd765eb13538f36e68d536913ef86101eb565b34801561030a57600080fd5b506005546101eb565b34801561031f57600080fd5b506101eb61032e3660046117c2565b610c42565b34801561033f57600080fd5b5061015261034e366004611825565b610cc5565b34801561035f57600080fd5b5061015261036e366004611796565b610e08565b600a5460ff16156103c15760405162461bcd60e51b8152602060048201526013602482015272105b1c9958591e481a5b9a5d1a585b1a5e9959606a1b60448201526064015b60405180910390fd5b600a8054600160ff199091168117909155546001600160a01b031633146104185760405162461bcd60e51b815260206004820152600b60248201526a2737ba1021b932b0ba37b960a91b60448201526064016103b8565b81518351146104785760405162461bcd60e51b815260206004820152602660248201527f4f776e657273206c656e67746820646f6e2774206d6174636820726f6c6573206044820152650d8cadccee8d60d31b60648201526084016103b8565b825181111580156104895750600081115b6104a55760405162461bcd60e51b81526004016103b890611863565b8251600255600481905560005b60025481101561066b5760008482815181106104d0576104d06118ae565b6020908102919091018101516001600160a01b0381166000908152600790925260409091205490915060ff161561053b5760405162461bcd60e51b815260206004820152600f60248201526e323ab83634b1b0ba329037bbb732b960891b60448201526064016103b8565b6001600160a01b0381166000908152600760205260409020805460ff191660011790558351849083908110610572576105726118ae565b6020908102919091018101516001600160a01b038316600090815260089092526040909120805460ff191660018360028111156105b1576105b16115f7565b021790555060018483815181106105ca576105ca6118ae565b602002602001015160028111156105e3576105e36115f7565b036105fe57600380549060006105f8836118da565b91905055505b806001600160a01b03167f9953fc2a6486f3b9e0ffa2b042145a90acc4f36c3a7ff6e7a974be4320d4297f85848151811061063b5761063b6118ae565b6020026020010151604051610650919061160d565b60405180910390a25080610663816118da565b9150506104b2565b506000600354116106be5760405162461bcd60e51b815260206004820181905260248201527f5468657265206d757374206265206174206c65617374206f6e652061646d696e60448201526064016103b8565b505050600655565b60006106d28383610f52565b90505b92915050565b3360009081526007602052604090205460609060ff168015610720575060013360009081526008602052604090205460ff16600281111561071e5761071e6115f7565b145b61077f5760405162461bcd60e51b815260206004820152602a60248201527f657865637574655472616e73616374696f6e3a206f6e6c792061646d696e2063604482015269616e206578656375746560b01b60648201526084016103b8565b600061078d87878787610c42565b60058054919250600061079f836118da565b909155506000905080805b85518110156108a35760006107d8858884815181106107cb576107cb6118ae565b60200260200101516106c6565b9050836001600160a01b0316816001600160a01b0316116108595760405162461bcd60e51b815260206004820152603560248201527f657865637574655472616e73616374696f6e3a206475706c6963617465206f7260448201527420756e6f726465726564207369676e61747572657360581b60648201526084016103b8565b6001600160a01b03811660009081526007602052604090205460ff1661087f5750610891565b82610889816118da565b935050809350505b8061089b816118da565b9150506107aa565b5060045481101561090e5760405162461bcd60e51b815260206004820152602f60248201527f657865637574655472616e73616374696f6e3a206e6f7420656e6f756768207660448201526e616c6964207369676e61747572657360881b60648201526084016103b8565b600080896001600160a01b0316898960405161092a91906118f3565b60006040518083038185875af1925050503d8060008114610967576040519150601f19603f3d011682016040523d82523d6000602084013e61096c565b606091505b5091509150816109be5760405162461bcd60e51b815260206004820152601d60248201527f657865637574655472616e73616374696f6e3a207478206661696c656400000060448201526064016103b8565b336001600160a01b03167f9053e9ec105157fac8c9308d63e6b22be5f50fe915a3e567419b624311a02d748b8b8b60016005546109fb919061190f565b8a87604051610a0f96959493929190611922565b60405180910390a29a9950505050505050505050565b333014610a445760405162461bcd60e51b81526004016103b890611974565b6001600160a01b03821660009081526007602052604090205460ff16610a985760405162461bcd60e51b81526020600482015260096024820152682737ba1027bbb732b960b91b60448201526064016103b8565b600160025411610ae25760405162461bcd60e51b815260206004820152601560248201527425b2b2b81030ba103632b0b9ba10189037bbb732b960591b60448201526064016103b8565b600160026000828254610af5919061190f565b90915550600190506001600160a01b03831660009081526008602052604090205460ff166002811115610b2a57610b2a6115f7565b03610b965760038054906000610b3f83611996565b9190505550600060035411610b965760405162461bcd60e51b815260206004820181905260248201527f5468657265206d757374206265206174206c65617374206f6e652061646d696e60448201526064016103b8565b6002548111158015610ba85750600081115b610bc45760405162461bcd60e51b81526004016103b890611863565b60048190556001600160a01b0382166000818152600760209081526040808320805460ff1990811690915560089092529182902080549182169055905160ff90911691907ffc05279d980904ad21917da850654cf4b3570c69c98df418c20a51cd5da73a5890610c3590849061160d565b60405180910390a2505050565b8051602080830191909120604080517ffe9232f930a1888451a774c0b727018ef25ecd765eb13538f36e68d536913ef8818501528082018890526001600160a01b03871660608201526080810186905260a0808201939093528151808203909301835260c00190528051910120600090610cbb81610f76565b9695505050505050565b333014610ce45760405162461bcd60e51b81526004016103b890611974565b6001600160a01b03831660009081526007602052604090205460ff16610d1d57600160026000828254610d1791906119ad565b90915550505b6002548111158015610d2f5750600081115b610d4b5760405162461bcd60e51b81526004016103b890611863565b60048190556001600160a01b03831660009081526007602090815260408083208054600160ff199182168117909255600890935292208054859391921690836002811115610d9b57610d9b6115f7565b02179055506001826002811115610db457610db46115f7565b03610dcf5760038054906000610dc9836118da565b91905055505b826001600160a01b03167f9953fc2a6486f3b9e0ffa2b042145a90acc4f36c3a7ff6e7a974be4320d4297f83604051610c35919061160d565b333014610e275760405162461bcd60e51b81526004016103b890611974565b4780821115610e6f5760405162461bcd60e51b8152602060048201526014602482015273496e73756666696369656e742062616c616e636560601b60448201526064016103b8565b6000836001600160a01b03168260405160006040518083038185875af1925050503d8060008114610ebc576040519150601f19603f3d011682016040523d82523d6000602084013e610ec1565b606091505b5050905080610f095760405162461bcd60e51b81526020600482015260146024820152732330b4b632b2103a379039b2b7321022ba3432b960611b60448201526064016103b8565b604080518481524760208201526001600160a01b038616917ff279e6a1f5e320cca91135676d9cb6e44ca8a08c0b88342bcdb1144f6511b568910160405180910390a250505050565b6000806000610f618585610fc4565b91509150610f6e81611009565b509392505050565b60006106d5610f83611156565b8360405161190160f01b6020820152602281018390526042810182905260009060620160405160208183030381529060405280519060200120905092915050565b6000808251604103610ffa5760208301516040840151606085015160001a610fee8782858561127d565b94509450505050611002565b506000905060025b9250929050565b600081600481111561101d5761101d6115f7565b036110255750565b6001816004811115611039576110396115f7565b036110865760405162461bcd60e51b815260206004820152601860248201527f45434453413a20696e76616c6964207369676e6174757265000000000000000060448201526064016103b8565b600281600481111561109a5761109a6115f7565b036110e75760405162461bcd60e51b815260206004820152601f60248201527f45434453413a20696e76616c6964207369676e6174757265206c656e6774680060448201526064016103b8565b60038160048111156110fb576110fb6115f7565b036111535760405162461bcd60e51b815260206004820152602260248201527f45434453413a20696e76616c6964207369676e6174757265202773272076616c604482015261756560f01b60648201526084016103b8565b50565b6000306001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161480156111af57507f000000000000000000000000000000000000000000000000000000000000000046145b156111d957507f000000000000000000000000000000000000000000000000000000000000000090565b50604080517f00000000000000000000000000000000000000000000000000000000000000006020808301919091527f0000000000000000000000000000000000000000000000000000000000000000828401527f000000000000000000000000000000000000000000000000000000000000000060608301524660808301523060a0808401919091528351808403909101815260c0909201909252805191012090565b6000807f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a08311156112b45750600090506003611338565b6040805160008082526020820180845289905260ff881692820192909252606081018690526080810185905260019060a0016020604051602081039080840390855afa158015611308573d6000803e3d6000fd5b5050604051601f1901519150506001600160a01b03811661133157600060019250925050611338565b9150600090505b94509492505050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff8111828210171561138057611380611341565b604052919050565b600067ffffffffffffffff8211156113a2576113a2611341565b5060051b60200190565b6001600160a01b038116811461115357600080fd5b8035600381106113d057600080fd5b919050565b600082601f8301126113e657600080fd5b813560206113fb6113f683611388565b611357565b82815260059290921b8401810191818101908684111561141a57600080fd5b8286015b8481101561143c5761142f816113c1565b835291830191830161141e565b509695505050505050565b6000806000806080858703121561145d57600080fd5b8435935060208086013567ffffffffffffffff8082111561147d57600080fd5b818801915088601f83011261149157600080fd5b813561149f6113f682611388565b81815260059190911b8301840190848101908b8311156114be57600080fd5b938501935b828510156114e55784356114d6816113ac565b825293850193908501906114c3565b9750505060408801359250808311156114fd57600080fd5b505061150b878288016113d5565b949793965093946060013593505050565b600082601f83011261152d57600080fd5b813567ffffffffffffffff81111561154757611547611341565b61155a601f8201601f1916602001611357565b81815284602083860101111561156f57600080fd5b816020850160208301376000918101602001919091529392505050565b6000806040838503121561159f57600080fd5b82359150602083013567ffffffffffffffff8111156115bd57600080fd5b6115c98582860161151c565b9150509250929050565b6000602082840312156115e557600080fd5b81356115f0816113ac565b9392505050565b634e487b7160e01b600052602160045260246000fd5b602081016003831061162f57634e487b7160e01b600052602160045260246000fd5b91905290565b600080600080600060a0868803121561164d57600080fd5b85359450602080870135611660816113ac565b945060408701359350606087013567ffffffffffffffff8082111561168457600080fd5b6116908a838b0161151c565b945060808901359150808211156116a657600080fd5b818901915089601f8301126116ba57600080fd5b81356116c86113f682611388565b81815260059190911b8301840190848101908c8311156116e757600080fd5b8585015b8381101561171f578035858111156117035760008081fd5b6117118f89838a010161151c565b8452509186019186016116eb565b508096505050505050509295509295909350565b60005b8381101561174e578181015183820152602001611736565b50506000910152565b6000815180845261176f816020860160208601611733565b601f01601f19169290920160200192915050565b6020815260006106d26020830184611757565b600080604083850312156117a957600080fd5b82356117b4816113ac565b946020939093013593505050565b600080600080608085870312156117d857600080fd5b8435935060208501356117ea816113ac565b925060408501359150606085013567ffffffffffffffff81111561180d57600080fd5b6118198782880161151c565b91505092959194509250565b60008060006060848603121561183a57600080fd5b8335611845816113ac565b9250611853602085016113c1565b9150604084013590509250925092565b6020808252602b908201527f7369676e6174757265735265717569726564206d75737420696e2028302c207460408201526a6f74616c5369676e65725d60a81b606082015260800190565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b6000600182016118ec576118ec6118c4565b5060010190565b60008251611905818460208701611733565b9190910192915050565b818103818111156106d5576106d56118c4565b60018060a01b038716815285602082015260c06040820152600061194960c0830187611757565b85606084015284608084015282810360a08401526119678185611757565b9998505050505050505050565b6020808252600890820152672737ba1039b2b63360c11b604082015260600190565b6000816119a5576119a56118c4565b506000190190565b808201808211156106d5576106d56118c456fea2646970667358221220a8fe08c080ad6d61c7235a1282286a6a74de8fd39691bbc688d4ca0cf424ffe264736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600436106100ec5760003560e01c8063a8641d851161008a578063d087d28811610059578063d087d288146102fe578063d0f6a84114610313578063d6994e5414610333578063f3fef3a31461035357600080fd5b8063a8641d8514610281578063bfd2b3a314610296578063caa3d5c0146102b6578063cd203bf7146102cb57600080fd5b80633408e470116100c65780633408e470146101da57806344276733146101f95780634c1d76f51461023f5780638b7bf3eb1461026c57600080fd5b80630ae49f2c1461013257806319045a25146101545780632f54bf6e1461019157600080fd5b3661012d576040805134815247602082015233917f90890809c654f11d6e72a28fa60149770a0d11ec6c92319d6ceb2bb0a4ea1a15910160405180910390a2005b600080fd5b34801561013e57600080fd5b5061015261014d366004611447565b610373565b005b34801561016057600080fd5b5061017461016f36600461158c565b6106c6565b6040516001600160a01b0390911681526020015b60405180910390f35b34801561019d57600080fd5b506101ca6101ac3660046115d3565b6001600160a01b031660009081526007602052604090205460ff1690565b6040519015158152602001610188565b3480156101e657600080fd5b506006545b604051908152602001610188565b34801561020557600080fd5b506102326102143660046115d3565b6001600160a01b031660009081526008602052604090205460ff1690565b604051610188919061160d565b34801561024b57600080fd5b5061025f61025a366004611635565b6106db565b6040516101889190611783565b34801561027857600080fd5b506003546101eb565b34801561028d57600080fd5b506002546101eb565b3480156102a257600080fd5b506101526102b1366004611796565b610a25565b3480156102c257600080fd5b506004546101eb565b3480156102d757600080fd5b507ffe9232f930a1888451a774c0b727018ef25ecd765eb13538f36e68d536913ef86101eb565b34801561030a57600080fd5b506005546101eb565b34801561031f57600080fd5b506101eb61032e3660046117c2565b610c42565b34801561033f57600080fd5b5061015261034e366004611825565b610cc5565b34801561035f57600080fd5b5061015261036e366004611796565b610e08565b600a5460ff16156103c15760405162461bcd60e51b8152602060048201526013602482015272105b1c9958591e481a5b9a5d1a585b1a5e9959606a1b60448201526064015b60405180910390fd5b600a8054600160ff199091168117909155546001600160a01b031633146104185760405162461bcd60e51b815260206004820152600b60248201526a2737ba1021b932b0ba37b960a91b60448201526064016103b8565b81518351146104785760405162461bcd60e51b815260206004820152602660248201527f4f776e657273206c656e67746820646f6e2774206d6174636820726f6c6573206044820152650d8cadccee8d60d31b60648201526084016103b8565b825181111580156104895750600081115b6104a55760405162461bcd60e51b81526004016103b890611863565b8251600255600481905560005b60025481101561066b5760008482815181106104d0576104d06118ae565b6020908102919091018101516001600160a01b0381166000908152600790925260409091205490915060ff161561053b5760405162461bcd60e51b815260206004820152600f60248201526e323ab83634b1b0ba329037bbb732b960891b60448201526064016103b8565b6001600160a01b0381166000908152600760205260409020805460ff191660011790558351849083908110610572576105726118ae565b6020908102919091018101516001600160a01b038316600090815260089092526040909120805460ff191660018360028111156105b1576105b16115f7565b021790555060018483815181106105ca576105ca6118ae565b602002602001015160028111156105e3576105e36115f7565b036105fe57600380549060006105f8836118da565b91905055505b806001600160a01b03167f9953fc2a6486f3b9e0ffa2b042145a90acc4f36c3a7ff6e7a974be4320d4297f85848151811061063b5761063b6118ae565b6020026020010151604051610650919061160d565b60405180910390a25080610663816118da565b9150506104b2565b506000600354116106be5760405162461bcd60e51b815260206004820181905260248201527f5468657265206d757374206265206174206c65617374206f6e652061646d696e60448201526064016103b8565b505050600655565b60006106d28383610f52565b90505b92915050565b3360009081526007602052604090205460609060ff168015610720575060013360009081526008602052604090205460ff16600281111561071e5761071e6115f7565b145b61077f5760405162461bcd60e51b815260206004820152602a60248201527f657865637574655472616e73616374696f6e3a206f6e6c792061646d696e2063604482015269616e206578656375746560b01b60648201526084016103b8565b600061078d87878787610c42565b60058054919250600061079f836118da565b909155506000905080805b85518110156108a35760006107d8858884815181106107cb576107cb6118ae565b60200260200101516106c6565b9050836001600160a01b0316816001600160a01b0316116108595760405162461bcd60e51b815260206004820152603560248201527f657865637574655472616e73616374696f6e3a206475706c6963617465206f7260448201527420756e6f726465726564207369676e61747572657360581b60648201526084016103b8565b6001600160a01b03811660009081526007602052604090205460ff1661087f5750610891565b82610889816118da565b935050809350505b8061089b816118da565b9150506107aa565b5060045481101561090e5760405162461bcd60e51b815260206004820152602f60248201527f657865637574655472616e73616374696f6e3a206e6f7420656e6f756768207660448201526e616c6964207369676e61747572657360881b60648201526084016103b8565b600080896001600160a01b0316898960405161092a91906118f3565b60006040518083038185875af1925050503d8060008114610967576040519150601f19603f3d011682016040523d82523d6000602084013e61096c565b606091505b5091509150816109be5760405162461bcd60e51b815260206004820152601d60248201527f657865637574655472616e73616374696f6e3a207478206661696c656400000060448201526064016103b8565b336001600160a01b03167f9053e9ec105157fac8c9308d63e6b22be5f50fe915a3e567419b624311a02d748b8b8b60016005546109fb919061190f565b8a87604051610a0f96959493929190611922565b60405180910390a29a9950505050505050505050565b333014610a445760405162461bcd60e51b81526004016103b890611974565b6001600160a01b03821660009081526007602052604090205460ff16610a985760405162461bcd60e51b81526020600482015260096024820152682737ba1027bbb732b960b91b60448201526064016103b8565b600160025411610ae25760405162461bcd60e51b815260206004820152601560248201527425b2b2b81030ba103632b0b9ba10189037bbb732b960591b60448201526064016103b8565b600160026000828254610af5919061190f565b90915550600190506001600160a01b03831660009081526008602052604090205460ff166002811115610b2a57610b2a6115f7565b03610b965760038054906000610b3f83611996565b9190505550600060035411610b965760405162461bcd60e51b815260206004820181905260248201527f5468657265206d757374206265206174206c65617374206f6e652061646d696e60448201526064016103b8565b6002548111158015610ba85750600081115b610bc45760405162461bcd60e51b81526004016103b890611863565b60048190556001600160a01b0382166000818152600760209081526040808320805460ff1990811690915560089092529182902080549182169055905160ff90911691907ffc05279d980904ad21917da850654cf4b3570c69c98df418c20a51cd5da73a5890610c3590849061160d565b60405180910390a2505050565b8051602080830191909120604080517ffe9232f930a1888451a774c0b727018ef25ecd765eb13538f36e68d536913ef8818501528082018890526001600160a01b03871660608201526080810186905260a0808201939093528151808203909301835260c00190528051910120600090610cbb81610f76565b9695505050505050565b333014610ce45760405162461bcd60e51b81526004016103b890611974565b6001600160a01b03831660009081526007602052604090205460ff16610d1d57600160026000828254610d1791906119ad565b90915550505b6002548111158015610d2f5750600081115b610d4b5760405162461bcd60e51b81526004016103b890611863565b60048190556001600160a01b03831660009081526007602090815260408083208054600160ff199182168117909255600890935292208054859391921690836002811115610d9b57610d9b6115f7565b02179055506001826002811115610db457610db46115f7565b03610dcf5760038054906000610dc9836118da565b91905055505b826001600160a01b03167f9953fc2a6486f3b9e0ffa2b042145a90acc4f36c3a7ff6e7a974be4320d4297f83604051610c35919061160d565b333014610e275760405162461bcd60e51b81526004016103b890611974565b4780821115610e6f5760405162461bcd60e51b8152602060048201526014602482015273496e73756666696369656e742062616c616e636560601b60448201526064016103b8565b6000836001600160a01b03168260405160006040518083038185875af1925050503d8060008114610ebc576040519150601f19603f3d011682016040523d82523d6000602084013e610ec1565b606091505b5050905080610f095760405162461bcd60e51b81526020600482015260146024820152732330b4b632b2103a379039b2b7321022ba3432b960611b60448201526064016103b8565b604080518481524760208201526001600160a01b038616917ff279e6a1f5e320cca91135676d9cb6e44ca8a08c0b88342bcdb1144f6511b568910160405180910390a250505050565b6000806000610f618585610fc4565b91509150610f6e81611009565b509392505050565b60006106d5610f83611156565b8360405161190160f01b6020820152602281018390526042810182905260009060620160405160208183030381529060405280519060200120905092915050565b6000808251604103610ffa5760208301516040840151606085015160001a610fee8782858561127d565b94509450505050611002565b506000905060025b9250929050565b600081600481111561101d5761101d6115f7565b036110255750565b6001816004811115611039576110396115f7565b036110865760405162461bcd60e51b815260206004820152601860248201527f45434453413a20696e76616c6964207369676e6174757265000000000000000060448201526064016103b8565b600281600481111561109a5761109a6115f7565b036110e75760405162461bcd60e51b815260206004820152601f60248201527f45434453413a20696e76616c6964207369676e6174757265206c656e6774680060448201526064016103b8565b60038160048111156110fb576110fb6115f7565b036111535760405162461bcd60e51b815260206004820152602260248201527f45434453413a20696e76616c6964207369676e6174757265202773272076616c604482015261756560f01b60648201526084016103b8565b50565b6000306001600160a01b037f0000000000000000000000000000000000000000000000000000000000000000161480156111af57507f000000000000000000000000000000000000000000000000000000000000000046145b156111d957507f000000000000000000000000000000000000000000000000000000000000000090565b50604080517f00000000000000000000000000000000000000000000000000000000000000006020808301919091527f0000000000000000000000000000000000000000000000000000000000000000828401527f000000000000000000000000000000000000000000000000000000000000000060608301524660808301523060a0808401919091528351808403909101815260c0909201909252805191012090565b6000807f7fffffffffffffffffffffffffffffff5d576e7357a4501ddfe92f46681b20a08311156112b45750600090506003611338565b6040805160008082526020820180845289905260ff881692820192909252606081018690526080810185905260019060a0016020604051602081039080840390855afa158015611308573d6000803e3d6000fd5b5050604051601f1901519150506001600160a01b03811661133157600060019250925050611338565b9150600090505b94509492505050565b634e487b7160e01b600052604160045260246000fd5b604051601f8201601f1916810167ffffffffffffffff8111828210171561138057611380611341565b604052919050565b600067ffffffffffffffff8211156113a2576113a2611341565b5060051b60200190565b6001600160a01b038116811461115357600080fd5b8035600381106113d057600080fd5b919050565b600082601f8301126113e657600080fd5b813560206113fb6113f683611388565b611357565b82815260059290921b8401810191818101908684111561141a57600080fd5b8286015b8481101561143c5761142f816113c1565b835291830191830161141e565b509695505050505050565b6000806000806080858703121561145d57600080fd5b8435935060208086013567ffffffffffffffff8082111561147d57600080fd5b818801915088601f83011261149157600080fd5b813561149f6113f682611388565b81815260059190911b8301840190848101908b8311156114be57600080fd5b938501935b828510156114e55784356114d6816113ac565b825293850193908501906114c3565b9750505060408801359250808311156114fd57600080fd5b505061150b878288016113d5565b949793965093946060013593505050565b600082601f83011261152d57600080fd5b813567ffffffffffffffff81111561154757611547611341565b61155a601f8201601f1916602001611357565b81815284602083860101111561156f57600080fd5b816020850160208301376000918101602001919091529392505050565b6000806040838503121561159f57600080fd5b82359150602083013567ffffffffffffffff8111156115bd57600080fd5b6115c98582860161151c565b9150509250929050565b6000602082840312156115e557600080fd5b81356115f0816113ac565b9392505050565b634e487b7160e01b600052602160045260246000fd5b602081016003831061162f57634e487b7160e01b600052602160045260246000fd5b91905290565b600080600080600060a0868803121561164d57600080fd5b85359450602080870135611660816113ac565b945060408701359350606087013567ffffffffffffffff8082111561168457600080fd5b6116908a838b0161151c565b945060808901359150808211156116a657600080fd5b818901915089601f8301126116ba57600080fd5b81356116c86113f682611388565b81815260059190911b8301840190848101908c8311156116e757600080fd5b8585015b8381101561171f578035858111156117035760008081fd5b6117118f89838a010161151c565b8452509186019186016116eb565b508096505050505050509295509295909350565b60005b8381101561174e578181015183820152602001611736565b50506000910152565b6000815180845261176f816020860160208601611733565b601f01601f19169290920160200192915050565b6020815260006106d26020830184611757565b600080604083850312156117a957600080fd5b82356117b4816113ac565b946020939093013593505050565b600080600080608085870312156117d857600080fd5b8435935060208501356117ea816113ac565b925060408501359150606085013567ffffffffffffffff81111561180d57600080fd5b6118198782880161151c565b91505092959194509250565b60008060006060848603121561183a57600080fd5b8335611845816113ac565b9250611853602085016113c1565b9150604084013590509250925092565b6020808252602b908201527f7369676e6174757265735265717569726564206d75737420696e2028302c207460408201526a6f74616c5369676e65725d60a81b606082015260800190565b634e487b7160e01b600052603260045260246000fd5b634e487b7160e01b600052601160045260246000fd5b6000600182016118ec576118ec6118c4565b5060010190565b60008251611905818460208701611733565b9190910192915050565b818103818111156106d5576106d56118c4565b60018060a01b038716815285602082015260c06040820152600061194960c0830187611757565b85606084015284608084015282810360a08401526119678185611757565b9998505050505050505050565b6020808252600890820152672737ba1039b2b63360c11b604082015260600190565b6000816119a5576119a56118c4565b506000190190565b808201808211156106d5576106d56118c456fea2646970667358221220a8fe08c080ad6d61c7235a1282286a6a74de8fd39691bbc688d4ca0cf424ffe264736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {},
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {
+      "withdraw(address,uint256)": {
+        "notice": "Function that allows the owner to withdraw all the Ether in the contract The function can only be called by the owner of the contract as defined by the isOwner modifier"
+      }
+    },
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 1619,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "singleton",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 1621,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "factory",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      },
+      {
+        "astId": 1623,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "totalSigner",
+        "offset": 0,
+        "slot": "2",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1625,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "adminCount",
+        "offset": 0,
+        "slot": "3",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1627,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "signaturesRequired",
+        "offset": 0,
+        "slot": "4",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1629,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "nonce",
+        "offset": 0,
+        "slot": "5",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1631,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "chainId",
+        "offset": 0,
+        "slot": "6",
+        "type": "t_uint256"
+      },
+      {
+        "astId": 1635,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "ownerMap",
+        "offset": 0,
+        "slot": "7",
+        "type": "t_mapping(t_address,t_bool)"
+      },
+      {
+        "astId": 1640,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "roleMap",
+        "offset": 0,
+        "slot": "8",
+        "type": "t_mapping(t_address,t_enum(Role)1567)"
+      },
+      {
+        "astId": 1644,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "signedMsgMap",
+        "offset": 0,
+        "slot": "9",
+        "type": "t_mapping(t_bytes32,t_bool)"
+      },
+      {
+        "astId": 1646,
+        "contract": "contracts/MultiSigWallet.sol:MultiSigWallet",
+        "label": "initialized",
+        "offset": 0,
+        "slot": "10",
+        "type": "t_bool"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      },
+      "t_bool": {
+        "encoding": "inplace",
+        "label": "bool",
+        "numberOfBytes": "1"
+      },
+      "t_bytes32": {
+        "encoding": "inplace",
+        "label": "bytes32",
+        "numberOfBytes": "32"
+      },
+      "t_enum(Role)1567": {
+        "encoding": "inplace",
+        "label": "enum MultiSigWallet.Role",
+        "numberOfBytes": "1"
+      },
+      "t_mapping(t_address,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_mapping(t_address,t_enum(Role)1567)": {
+        "encoding": "mapping",
+        "key": "t_address",
+        "label": "mapping(address => enum MultiSigWallet.Role)",
+        "numberOfBytes": "32",
+        "value": "t_enum(Role)1567"
+      },
+      "t_mapping(t_bytes32,t_bool)": {
+        "encoding": "mapping",
+        "key": "t_bytes32",
+        "label": "mapping(bytes32 => bool)",
+        "numberOfBytes": "32",
+        "value": "t_bool"
+      },
+      "t_uint256": {
+        "encoding": "inplace",
+        "label": "uint256",
+        "numberOfBytes": "32"
+      }
+    }
+  }
+}

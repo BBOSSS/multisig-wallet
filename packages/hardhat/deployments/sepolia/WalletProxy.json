@@ -1,0 +1,88 @@
+{
+  "address": "0x1aF64138E19AA207e626AF3e4C4fD7761B8409f2",
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "_singleton",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "stateMutability": "payable",
+      "type": "fallback"
+    }
+  ],
+  "transactionHash": "0x9727acdd4b7ff230d1bebd5491ef70524d234bc9deb36ab1b51a59b916c9a81f",
+  "receipt": {
+    "to": null,
+    "from": "0x2f2E264e8F52258A5F6F7C459EEDCaE586d4f409",
+    "contractAddress": "0x1aF64138E19AA207e626AF3e4C4fD7761B8409f2",
+    "transactionIndex": 45,
+    "gasUsed": "128421",
+    "logsBloom": "0x00000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "blockHash": "0x8abd23b779fa79c36f4554e548322e4fd8cc82ac5a382cb531d56ed343b09798",
+    "transactionHash": "0x9727acdd4b7ff230d1bebd5491ef70524d234bc9deb36ab1b51a59b916c9a81f",
+    "logs": [],
+    "blockNumber": 6366376,
+    "cumulativeGasUsed": "6272084",
+    "status": 1,
+    "byzantium": true
+  },
+  "args": [
+    "0xc2Ba4c7eB13f5e3fb014e8994fCa8970FA245898"
+  ],
+  "numDeployments": 1,
+  "solcInputHash": "f83a98a8fe4415622d26ae429feae1a8",
+  "metadata": "{\"compiler\":{\"version\":\"0.8.17+commit.8df45f5f\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"address\",\"name\":\"_singleton\",\"type\":\"address\"}],\"stateMutability\":\"nonpayable\",\"type\":\"constructor\"},{\"stateMutability\":\"payable\",\"type\":\"fallback\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{\"constructor\":{\"details\":\"Constructor function sets address of singleton contract.\",\"params\":{\"_singleton\":\"Singleton address.\"}}},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"contracts/WalletProxy.sol\":\"WalletProxy\"},\"evmVersion\":\"london\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\",\"useLiteralContent\":true},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[]},\"sources\":{\"contracts/WalletProxy.sol\":{\"content\":\"//SPDX-License-Identifier: MIT\\npragma solidity >=0.8.0 <0.9.0;\\n\\ninterface IProxy {\\n\\tfunction masterCopy() external view returns (address);\\n}\\n\\ncontract WalletProxy {\\n\\t// singleton always needs to be first declared variable, to ensure that it is at the same location in the contracts to which calls are delegated.\\n\\t// To reduce deployment costs this variable is internal and needs to be retrieved via `getStorageAt`\\n\\taddress internal singleton; // slot 0 for proxy\\n\\taddress internal factory; // slot 1 for factory\\n\\n\\t/// @dev Constructor function sets address of singleton contract.\\n\\t/// @param _singleton Singleton address.\\n\\tconstructor(address _singleton) {\\n\\t\\trequire(_singleton != address(0), \\\"Invalid singleton address provided\\\");\\n\\t\\tsingleton = _singleton;\\n\\t\\tfactory = msg.sender;\\n\\t}\\n\\n\\t/// @dev Fallback function forwards all transactions and returns all received return data.\\n\\tfallback() external payable {\\n\\t\\t// solhint-disable-next-line no-inline-assembly\\n\\t\\tassembly {\\n\\t\\t\\tlet _singleton := and(\\n\\t\\t\\t\\tsload(0),\\n\\t\\t\\t\\t0xffffffffffffffffffffffffffffffffffffffff\\n\\t\\t\\t)\\n\\t\\t\\t// 0xa619486e == keccak(\\\"masterCopy()\\\"). The value is right padded to 32-bytes with 0s\\n\\t\\t\\tif eq(\\n\\t\\t\\t\\tcalldataload(0),\\n\\t\\t\\t\\t0xa619486e00000000000000000000000000000000000000000000000000000000\\n\\t\\t\\t) {\\n\\t\\t\\t\\tmstore(0, _singleton)\\n\\t\\t\\t\\treturn(0, 0x20)\\n\\t\\t\\t}\\n\\t\\t\\tcalldatacopy(0, 0, calldatasize())\\n\\t\\t\\tlet success := delegatecall(\\n\\t\\t\\t\\tgas(),\\n\\t\\t\\t\\t_singleton,\\n\\t\\t\\t\\t0,\\n\\t\\t\\t\\tcalldatasize(),\\n\\t\\t\\t\\t0,\\n\\t\\t\\t\\t0\\n\\t\\t\\t)\\n\\t\\t\\treturndatacopy(0, 0, returndatasize())\\n\\t\\t\\tif eq(success, 0) {\\n\\t\\t\\t\\trevert(0, returndatasize())\\n\\t\\t\\t}\\n\\t\\t\\treturn(0, returndatasize())\\n\\t\\t}\\n\\t}\\n}\\n\",\"keccak256\":\"0xd17b5b38ee207de2f4edbb6495a59618b8d1d1dec78fa0ffa5e960079bf64214\",\"license\":\"MIT\"}},\"version\":1}",
+  "bytecode": "0x608060405234801561001057600080fd5b5060405161017b38038061017b83398101604081905261002f916100c2565b6001600160a01b0381166100945760405162461bcd60e51b815260206004820152602260248201527f496e76616c69642073696e676c65746f6e20616464726573732070726f766964604482015261195960f21b606482015260840160405180910390fd5b600080546001600160a01b039092166001600160a01b031992831617905560018054909116331790556100f2565b6000602082840312156100d457600080fd5b81516001600160a01b03811681146100eb57600080fd5b9392505050565b607b806101006000396000f3fe6080604052600080546001600160a01b0316632cf35bc960e11b823501602757808252602082f35b3682833781823684845af490503d82833e806040573d82fd5b503d81f3fea2646970667358221220f77c762dc2cb30ef94320aa56c6d8e8a02f95f1ae4751fe11f403f6e854c428064736f6c63430008110033",
+  "deployedBytecode": "0x6080604052600080546001600160a01b0316632cf35bc960e11b823501602757808252602082f35b3682833781823684845af490503d82833e806040573d82fd5b503d81f3fea2646970667358221220f77c762dc2cb30ef94320aa56c6d8e8a02f95f1ae4751fe11f403f6e854c428064736f6c63430008110033",
+  "devdoc": {
+    "kind": "dev",
+    "methods": {
+      "constructor": {
+        "details": "Constructor function sets address of singleton contract.",
+        "params": {
+          "_singleton": "Singleton address."
+        }
+      }
+    },
+    "version": 1
+  },
+  "userdoc": {
+    "kind": "user",
+    "methods": {},
+    "version": 1
+  },
+  "storageLayout": {
+    "storage": [
+      {
+        "astId": 2128,
+        "contract": "contracts/WalletProxy.sol:WalletProxy",
+        "label": "singleton",
+        "offset": 0,
+        "slot": "0",
+        "type": "t_address"
+      },
+      {
+        "astId": 2130,
+        "contract": "contracts/WalletProxy.sol:WalletProxy",
+        "label": "factory",
+        "offset": 0,
+        "slot": "1",
+        "type": "t_address"
+      }
+    ],
+    "types": {
+      "t_address": {
+        "encoding": "inplace",
+        "label": "address",
+        "numberOfBytes": "20"
+      }
+    }
+  }
+}

@@ -3,7 +3,9 @@ import { Address, BlockieAvatar } from "../../../components/scaffold-eth";
 import { Abi, decodeFunctionData, formatEther } from "viem";
 import { DecodeFunctionDataReturnType } from "viem/_types/utils/abi/decodeFunctionData";
 import { useAccount, useWalletClient } from "wagmi";
-import { TransactionData, getPoolServerUrl } from "~~/app/create/page";
+// import { TransactionData, getPoolServerUrl } from "~~/app/create/page";
+import { Transaction } from "~~/utils/postgres/transaction";
+
 import {
   useDeployedContractInfo,
   useScaffoldContract,
@@ -15,11 +17,15 @@ import { notification } from "~~/utils/scaffold-eth";
 import { useLocalStorage } from "usehooks-ts";
 import { Address as TAddress, isAddress } from "viem";
 
-type TransactionItemProps = { tx: TransactionData; completed: boolean; outdated: boolean };
+type TransactionItemProps = { tx: Transaction; completed: boolean; outdated: boolean };
 
 const proxyAddressStorageKey = "multisigWallet.proxyAddress";
 
 export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outdated }) => {
+  console.log("tx:", tx);
+  console.log("tx.requiredApprovals:", tx.requiredApprovals);
+  console.log("tx.txTo:", tx.txTo);
+  console.log("tx.address:", tx.address);
   const [proxyAddress, setProxyAddress] = useLocalStorage<TAddress>(
     proxyAddressStorageKey,
     "0x",
@@ -37,7 +43,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
   const { data: walletClient } = useWalletClient();
   const transactor = useTransactor();
   const { targetNetwork } = useTargetNetwork();
-  const poolServerUrl = getPoolServerUrl(targetNetwork.id);
+  // const poolServerUrl = getPoolServerUrl(targetNetwork.id);
 
   const { data: signaturesRequired } = useScaffoldReadContract({
     contractAddr: proxyAddress,
@@ -70,6 +76,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
     contractInfo?.abi && tx.data
       ? decodeFunctionData({ abi: contractInfo.abi as Abi, data: tx.data })
       : ({} as DecodeFunctionDataReturnType);
+  console.log("txnData:", txnData);
 
   const hasSigned = tx.signers.indexOf(address as TAddress) >= 0;
   const hasEnoughSignatures = signaturesRequired ? tx.signatures.length >= Number(signaturesRequired) : false;
@@ -124,7 +131,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
               ) : (
                 <>
                   <div className="flex gap-4">
-                    Transfer to: <Address address={tx.to as TAddress} />
+                    Transfer to: <Address address={tx.txTo as TAddress} />
                   </div>
                   <div>Amount: {formatEther(BigInt(tx.amount))} Ξ </div>
                 </>
@@ -152,7 +159,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
             <BlockieAvatar size={20} address={tx.hash} /> {tx.hash.slice(0, 7)}
           </div>
 
-          <Address address={tx.to as TAddress} />
+          <Address address={tx.txTo as TAddress} />
 
           <div>{formatEther(BigInt(tx.amount))} Ξ</div>
 
@@ -179,11 +186,11 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
                         return;
                       }
 
-                      const newHash = (await metaMultiSigWallet?.read.getTransactionHash([
+                      const newHash = (await metaMultiSigWallet?.read.getTransactionStructHash([
                         nonce as bigint,
-                        tx.to as TAddress,
+                        tx.txTo as TAddress,
                         BigInt(tx.amount),
-                        tx.data,
+                        tx.data as `0x${string}`,
                       ])) as `0x${string}`;
 
                       const signature = await walletClient.signMessage({
@@ -200,19 +207,38 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
                           newHash,
                         );
 
-                        await fetch(poolServerUrl, {
+                        // await fetch(poolServerUrl, {
+                        //   method: "POST",
+                        //   headers: { "Content-Type": "application/json" },
+                        //   body: JSON.stringify(
+                        //     {
+                        //       ...tx,
+                        //       signatures: finalSigList,
+                        //       signers: finalSigners,
+                        //     },
+                        //     // stringifying bigint
+                        //     (key, value) => (typeof value === "bigint" ? value.toString() : value),
+                        //   ),
+                        // });
+                        fetch("api/tx/update", {
                           method: "POST",
-                          headers: { "Content-Type": "application/json" },
-                          body: JSON.stringify(
-                            {
-                              ...tx,
-                              signatures: finalSigList,
-                              signers: finalSigners,
-                            },
-                            // stringifying bigint
-                            (key, value) => (typeof value === "bigint" ? value.toString() : value),
-                          ),
-                        });
+                          headers: {
+                            "Content-Type": "application/json",
+                          },
+                          body: JSON.stringify({
+                            id: tx.id,
+                            signatures: finalSigList,
+                            signers: finalSigners,
+                          }, (key, value) => (typeof value === "bigint" ? value.toString() : value)),
+                        })
+                          .then(response => {
+                            
+                          })
+                          .catch(error => {
+                            console.error("Error:", error);
+                            notification.error(`Error: ${error}`);
+                          });
+                
                       } else {
                         notification.info("Only owners can sign transactions");
                       }
@@ -237,17 +263,17 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
                         console.log("No contract info");
                         return;
                       }
-                      const newHash = (await metaMultiSigWallet.read.getTransactionHash([
+                      const newHash = (await metaMultiSigWallet.read.getTransactionStructHash([
                         nonce as bigint,
-                        tx.to as TAddress,
+                        tx.txTo as TAddress,
                         BigInt(tx.amount),
-                        tx.data,
+                        tx.data as `0x${string}`,
                       ])) as `0x${string}`;
 
                       const [finalSigList] = await getSortedSigList(tx.signatures, newHash);
 
                       await transactor(() =>
-                        metaMultiSigWallet.write.executeTransaction([nonce || BigInt(0), tx.to as TAddress, BigInt(tx.amount), tx.data, finalSigList]),
+                        metaMultiSigWallet.write.executeTransaction([nonce || BigInt(0), tx.txTo as TAddress, BigInt(tx.amount), tx.data as `0x${string}`, finalSigList]),
                       );
                     } catch (e) {
                       notification.error("Error executing transaction");
@@ -270,7 +296,7 @@ export const TransactionItem: FC<TransactionItemProps> = ({ tx, completed, outda
           <div>Function name: {txnData.functionName || "transferFunds"}</div>
 
           <div className="flex gap-1 items-center">
-            Addressed to: <Address address={(txnData.args?.[0] ? String(txnData.args?.[0]) : tx.to) as TAddress} size="xs" />
+            Addressed to: <Address address={(txnData.args?.[0] ? String(txnData.args?.[0]) : tx.txTo) as TAddress} size="xs" />
           </div>
         </div>
       </div>
