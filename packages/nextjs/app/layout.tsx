@@ -7,10 +7,10 @@ import "~~/styles/globals.css";
 const baseUrl = process.env.VERCEL_URL
   ? `https://${process.env.VERCEL_URL}`
   : `http://localhost:${process.env.PORT || 3000}`;
-const imageUrl = `${baseUrl}/thumbnail.jpg`;
+const imageUrl = `${baseUrl}/wallet.png`;
 
-const title = "SpeedRunEthereum";
-const titleTemplate = "%s | SpeedRunEthereum";
+const title = "MultiSig Wallet";
+const titleTemplate = "%s | MultiSig Wallet";
 const description = "Built with 🏗 Scaffold-ETH 2";
 
 export const metadata: Metadata = {
@@ -42,7 +42,7 @@ export const metadata: Metadata = {
     description,
   },
   icons: {
-    icon: [{ url: "/favicon.png", sizes: "32x32", type: "image/png" }],
+    icon: [{ url: "/wallet.png", sizes: "32x32", type: "image/png" }],
   },
 };
 

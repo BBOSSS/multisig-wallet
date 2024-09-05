@@ -6,7 +6,7 @@ import { verify } from "../utils/verify";
 
 const verifyContract: DeployFunction = async function (hre: HardhatRuntimeEnvironment) {
   const localNetworkList = ["hardhat", "localhost"];
-  if (localNetworkList.includes(hre.network.name) && process.env.ETHERSCAN_API_KEY) {
+  if (localNetworkList.includes(hre.network.name) || !process.env.ETHERSCAN_API_KEY) {
     return;
   }
   // const { deployer } = await hre.getNamedAccounts();

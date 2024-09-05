@@ -1,5 +1,5 @@
 {
-  "name": "Scaffold-ETH 2 DApp",
-  "description": "A DApp built with Scaffold-ETH",
-  "iconPath": "logo.svg"
+  "name": "MultiSig Wallet DApp",
+  "description": "A multisig wallet is a smart contract that acts like a wallet, allowing us to secure assets by requiring multiple accounts to 'vote' on transactions.",
+  "iconPath": "wallet.png"
 }
